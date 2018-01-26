@@ -1,4 +1,6 @@
 import { createStore } from 'redux';
 import zhedApp from '../reducers';
 
-let store = createStore(zhedApp);
+const store = createStore(zhedApp);
+
+export default store;

@@ -1,0 +1,40 @@
+.Cell {
+  height: 5rem;
+  width: 5rem;
+}
+
+.gray-100 {
+  background-color: #f8f9fa;
+}
+
+.gray-200 {
+  background-color: #e9ecef;
+}
+
+.gray-300 {
+  background-color: #dee2e6;
+}
+
+.gray-400 {
+  background-color: #ced4da;
+}
+
+.gray-500 {
+  background-color: #adb5bd;
+}
+
+.gray-600 {
+  background-color: #6c757d;
+}
+
+.gray-700 {
+  background-color: #495057;
+}
+
+.gray-800 {
+  background-color: #343a40;
+}
+
+.gray-900 {
+  background-color: #212529;
+}

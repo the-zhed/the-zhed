@@ -1,20 +1,25 @@
 import React from 'react';
-import Zhed from './game/Zhed';
+import Zhed from './Zhed';
 
-const map = [
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  1 , "x",  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ],
-  [ 0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ]
-];
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
+
+    const bgData = props.map.map((rows) => {
+      return rows.map((col) => {
+        return getRandomInt(5);
+      });
+    })
+
+    this.state = {
+      defaultData: props.map,
+      mapData: props.map,
+      bgData,
+    };
 
     this.restart = this.restart.bind(this);
     this.undo = this.undo.bind(this);
@@ -30,8 +35,8 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <Zhed map={map} />
+      <div className="Game">
+        <Zhed mapData={this.state.mapData} bgData={this.state.bgData} />
         <div className="my-5">
           <button
             className="btn btn-secondary"

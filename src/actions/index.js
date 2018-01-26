@@ -1,14 +1,28 @@
-export const FETCH_PACKAGE = 'FETCH_PACKAGE';
-export const RECIEVE_PACKAGE = 'RECIEVE_PACKAGE';
-export const SELECT_PACKAGE = 'SELECT_PACKAGE';
+export const FETCH_PACK = 'FETCH_PACK';
+export const RECIEVE_PACK = 'RECIEVE_PACK';
+export const SELECT_PACK = 'SELECT_PACK';
 export const SELECT_ZHED_BUTTON = 'SELECT_ZHED_BUTTON';
 export const SELECT_ZHED_DOT = 'SELECT_ZHED_DOT';
 export const RESTART_ZHED = 'RESTART_ZHED';
 export const UNDO_ZHED = 'UNDO_ZHED';
 
-export function fetchPackage(level) {
+export function fetchPack(level) {
   return {
-    type: FETCH_PACKAGE,
+    type: FETCH_PACK,
+    level
+  };
+}
+
+export function recievePack(pack) {
+  return {
+    type: RECIEVE_PACK,
+    pack
+  };
+}
+
+export function selectPack(level) {
+  return {
+    type: SELECT_PACK,
     level
   };
 }

@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ZhedBoard from './components/ZhedBoard';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+
+import level10 from './schema/level10';
+import { randomMap, nullMap } from './util';
+
+level10.backgroundMap = randomMap(level10.map);
+level10.indicatorMap = nullMap(level10.map);
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to Zhed</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="container">
+          <ZhedBoard {...level10} />
+        </div>
       </div>
     );
   }

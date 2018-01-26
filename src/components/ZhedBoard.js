@@ -7,8 +7,9 @@ class ZhedBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      level: props.level,
       backgroundMap: props.backgroundMap,
-      zhedBlockMap: props.zhedBlockMap,
+      zhedBlockMap: props.map,
       indicatorMap: props.indicatorMap,
     };
   }
@@ -16,7 +17,7 @@ class ZhedBoard extends React.Component {
     return (
       <div className="card">
         <div className="card-header">
-          ZhedBoard
+          ZhedBoard: {this.state.level}
         </div>
         <div className="card-body">
           <ZhedPanel {...this.state} />

@@ -10,6 +10,9 @@ class ZhedPanel extends React.Component {
       indicatorMap: props.indicatorMap,
     };
   }
+  handleClick(rowIdx, colIdx) {
+    console.log(rowIdx, colIdx);
+  }
   render() {
     return (
       <div>
@@ -19,9 +22,10 @@ class ZhedPanel extends React.Component {
             {row.map((col, colIdx) => (
               <ZhedTile
                 key={colIdx}
+                onClick={() => this.handleClick(rowIdx, colIdx)}
                 background={this.state.backgroundMap[rowIdx][colIdx]}
                 zhedBlock={col}
-                indicator
+                indicator={this.state.indicatorMap[rowIdx][colIdx]}
               />
             ))}
           </div>

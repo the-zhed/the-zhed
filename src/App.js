@@ -3,11 +3,11 @@ import ZhedBoard from './components/ZhedBoard';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-import level10 from './schema/level10';
-import { randomMap, nullMap } from './util';
+// import level10 from './schema/level10';
+// import { randomMap, nullMap } from './util';
 
-level10.backgroundMap = randomMap(level10.map);
-level10.indicatorMap = nullMap(level10.map);
+// level10.backgroundMap = randomMap(level10.map);
+// level10.indicatorMap = nullMap(level10.map);
 
 class App extends Component {
   render() {
@@ -17,7 +17,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Zhed</h1>
         </header>
         <div className="container">
-          <ZhedBoard {...level10} />
+          <ZhedBoard />
         </div>
       </div>
     );

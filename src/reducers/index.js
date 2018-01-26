@@ -1,43 +1,42 @@
 import { combineReducers } from 'redux';
 import {
-  FETCH_PACKAGE,
-  RECIEVE_PACKAGE,
-  SELECT_PACKAGE,
+  FETCH_PACK,
+  RECIEVE_PACK,
+  SELECT_PACK,
   SELECT_ZHED_BUTTON,
   SELECT_ZHED_DOT,
   RESTART_ZHED,
   UNDO_ZHED,
 } from '../actions';
 
-const initialState = {
-  currentGame: null,
-  package: {},
-};
+import level10 from '../schema/level10';
+import { randomMap, nullMap } from '../util';
 
-function zhed(state = [], action) {
+level10.backgroundMap = randomMap(level10.map);
+level10.indicatorMap = nullMap(level10.map);
 
+// const initialState = {
+  //   package: {},
+  //   current: null,
+// };
+
+function pack(state = [], action) {
+  switch (action.type) {
+    case FETCH_PACK:
+    case RECIEVE_PACK:
+    case SELECT_PACK:
+      return state;
+
+    default:
+      return state;
+  }
 }
 
-function zhedApp(state = initialState, action) {
+function current(state = level10, action) {
   switch (action.type) {
-    // case SET_VISIBILITY_FILTER:
-    //   return Object.assign({}, state, {
-    //     visibilityFilter: action.filter
-    //   });
-    case SELECT_PACKAGE:
-      return state;
-
     case SELECT_ZHED_BUTTON:
-      return Object.assign({}, state, {
-        todos: zhed(state.todos, action)
-      });
-
     case SELECT_ZHED_DOT:
-      return state;
-
     case RESTART_ZHED:
-      return state;
-
     case UNDO_ZHED:
       return state;
 
@@ -46,4 +45,29 @@ function zhedApp(state = initialState, action) {
   }
 }
 
-export const zhedApp;
+// function selectZhed(state = {}, action) {
+// }
+
+// function zhed(state = initialState, action) {
+//   switch (action.type) {
+//     case SELECT_PACKAGE:
+//       return state;
+//     case SELECT_ZHED_BUTTON:
+//     case SELECT_ZHED_DOT:
+//       return Object.assign({}, state, {
+//         current: selectZhed(state.currentGame, action)
+//       });
+//     case RESTART_ZHED:
+//     case UNDO_ZHED:
+//       return state;
+//     default:
+//       return state;
+//   }
+// }
+
+const zhedApp = combineReducers({
+  pack,
+  current
+});
+
+export default zhedApp;

@@ -1,41 +1,29 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import ZhedButton from './ZhedButton';
 import ZhedDot from './ZhedDot';
 import './ZhedTile.css';
 
-class ZhedTile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      background: props.background,
-      zhedBlock: props.zhedBlock,
-      indicator: props.indicator,
-    };
-  }
-  renderButton(block) {
-    if (block !== '0') {
-      return <ZhedButton block={block} onClick={this.props.onClick} />;
+const ZhedTile = ({ background, zhedBlock, indicator, onSelectZhedButton, onSelectZhedDot }) => (
+  <div className={classnames('Zhed-tile', 'p-1', `gray-${background}00`)}>
+    {zhedBlock !== '0'
+      ? <ZhedButton block={zhedBlock} onClick={() => onSelectZhedButton()} />
+      : null
     }
-    return null;
-  }
-  renderDot(dot) {
-    if (dot) {
-      return <ZhedDot onClick={this.props.onClick} />;
+    {indicator
+      ? <ZhedDot onClick={() => onSelectZhedDot()} />
+      : null
     }
-    return null;
-  }
-  render() {
-    const color = this.state.background;
-    const block = this.state.zhedBlock;
-    const dot = this.state.indicator;
-    return (
-      <div className={classnames('Zhed-tile', 'p-1', `gray-${color}00`)}>
-        {this.renderButton(block)}
-        {this.renderDot(dot)}
-      </div>
-    )
-  }
-}
+  </div>
+)
+
+ZhedTile.propTypes = {
+  background: PropTypes.number,
+  zhedBlock: PropTypes.string,
+  indicator: PropTypes.bool,
+  onSelectZhedButton: PropTypes.func,
+  onSelectZhedDot: PropTypes.func,
+};
 
 export default ZhedTile;

@@ -1,11 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function ZhedDot(props) {
-  return (
-    <div>
-      Dot
-    </div>
-  );
-}
+const ZhedDot = ({ onClick }) => (
+  <div onClick={() => onClick()}>
+    Dot
+  </div>
+)
+
+ZhedDot.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export default ZhedDot;

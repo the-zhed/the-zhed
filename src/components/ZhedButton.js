@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ZhedButton.css';
 
-function ZhedButton(props) {
-  switch (props.block) {
+const ZhedButton = ({ block, onClick }) => {
+  switch (block) {
     case 'Z':
     case 'z':
       return <button className="btn btn-dark btn-block" disabled>Z</button>;
@@ -20,14 +21,19 @@ function ZhedButton(props) {
       return (
         <button
           className="btn btn-warning btn-zhed btn-block"
-          onClick={() => props.onClick()}
+          onClick={() => onClick()}
         >
-          {props.block}
+          {block}
         </button>
       );
     default:
-      break;
+      return null;
   }
 }
+
+ZhedButton.propTypes = {
+  block: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default ZhedButton;

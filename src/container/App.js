@@ -1,5 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
+import ZhedBoard from '../components/ZhedBoard';
 import {
   selectZhedButton,
   selectZhedDot,
@@ -9,31 +9,30 @@ import {
 
 const mapStateToProps = state => {
   return {
-    current: state.current,
+    map: state.current,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClicker: coordinate => {
-      console.log('onClicker');
+    onSelectZhedButton: coordinate => {
       dispatch(selectZhedButton(coordinate));
-    }
+    },
+    onSelectZhedDot: coordinate => {
+      dispatch(selectZhedDot(coordinate));
+    },
+    onRestartZhed: () => {
+      dispatch(restartZhed());
+    },
+    onUndoZhed: () => {
+      dispatch(undoZhed());
+    },
   }
 }
 
-let App = ({ current, onClicker }) => {
-
-  return (
-    <div>
-      <h1>container App</h1>
-      <button onClick={onClicker}>Click me!</button>
-    </div>
-  )
-};
-App = connect(
+const App = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(ZhedBoard);
 
 export default App;

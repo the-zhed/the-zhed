@@ -4,17 +4,17 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faRedo, faReply } from '@fortawesome/fontawesome-free-solid';
 import ZhedPanel from './ZhedPanel';
 
-const ZhedBoard = ({ map, onSelectZhedButton, onSelectZhedDot, onRestartZhed, onUndoZhed }) => (
+const ZhedBoard = ({ stagingZhed, onSelectZhedButton, onSelectZhedDot, onRestartZhed, onUndoZhed }) => (
   <div className="card">
     <div className="card-header">
-      ZhedBoard: {map.level}
+      ZhedBoard: {stagingZhed.level}
     </div>
     <div className="card-body">
-      <ZhedPanel
-        map={map}
+      {/* <ZhedPanel
+        map={stagingZhed}
         onSelectZhedButton={coordinate => onSelectZhedButton(coordinate)}
         onSelectZhedDot={coordinate => onSelectZhedDot(coordinate)}
-      />
+      /> */}
     </div>
     <div className="card-footer text-muted">
       <button
@@ -36,7 +36,7 @@ const ZhedBoard = ({ map, onSelectZhedButton, onSelectZhedDot, onRestartZhed, on
 )
 
 ZhedBoard.propTypes = {
-  map: PropTypes.object,
+  stagingZhed: PropTypes.object,
   onSelectZhedButton: PropTypes.func,
   onSelectZhedDot: PropTypes.func,
   onRestartZhed: PropTypes.func,

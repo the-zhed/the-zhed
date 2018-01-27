@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import store from './store';
-import App from './container/App';
+import Zhed from './container/Zhed';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Zhed />
   </Provider>,
   document.getElementById('root')
 );

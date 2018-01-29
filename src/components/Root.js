@@ -7,8 +7,9 @@ import {
   Link
 } from 'react-router-dom';
 import Home from './Home';
-import Pack from './Pack';
 import About from './About';
+import Pack from './Pack';
+import Zhed from './Zhed';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -22,7 +23,8 @@ const Root = ({ store }) => (
         <hr/>
         <Route exact path="/" component={Home}/>
         <Route path="/about" component={About}/>
-        <Route path="/pack" component={Pack}/>
+        <Route path="/pack/" component={Pack}/>
+        <Route path="/zhed/:level" component={Zhed}/>
       </div>
     </Router>
   </Provider>

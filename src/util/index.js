@@ -9,13 +9,18 @@
 //   }
 // ];
 export function makePackMap() {
-  const result = [];
-  for (let i = 1; i <= 100; i++) {
+  let result = JSON.parse(window.localStorage.getItem('Zhed-App'));
+  if (result) {
+    return result;
+  }
+  result = [{ level: '1', enabled: true }];
+  for (let i = 2; i <= 100; i++) {
     result.push({
-      level: [`zhed-${i}`],
-      isPass: false,
+      level: i.toString(),
+      enabled: false,
     });
   }
+  window.localStorage.setItem('Zhed-App', JSON.stringify(result));
   return result;
 }
 

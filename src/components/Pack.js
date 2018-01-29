@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Jumbotron from './pack/Jumbotron'
@@ -18,6 +19,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(
-  mapStateToProps
-)(Pack)
+export default withRouter(connect(mapStateToProps)(Pack))

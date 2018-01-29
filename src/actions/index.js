@@ -19,14 +19,14 @@ function receiveZhed(level, zhed) {
 function fetchZhed(level) {
   return dispatch => {
     dispatch(requestZhed(level))
-    return fetch(`https://github.io/the-zhed/data-json/dist/${level}.json`)
+    return fetch(`https://the-zhed.github.io/data-json/data/pack1/d.${level}.json`)
       .then(response => response.json())
       .then(zhed => dispatch(receiveZhed(level, zhed)))
   }
 }
 
 function shouldFetchZhed(state, level) {
-  const pack = state.packByLevel[level]
+  const pack = state.packZhed[level]
   if (!pack) {
     return true
   } else if (pack.isFetching) {

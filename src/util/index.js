@@ -1,13 +1,20 @@
-// return {
-//   'zhed-1': { isPass: false },
-//   'zhed-2': { isPass: false },
-// };
+// return [
+//   {
+//     level: 'zhed-2',
+//     isPass: false,
+//   },
+//   {
+//     level: 'zhed-1',
+//     isPass: false,
+//   }
+// ];
 export function makePackMap() {
-  const result = {};
+  const result = [];
   for (let i = 1; i <= 100; i++) {
-    result[`zhed-${i}`] = {
+    result.push({
+      level: [`zhed-${i}`],
       isPass: false,
-    };
+    });
   }
   return result;
 }

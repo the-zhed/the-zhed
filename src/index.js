@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import './index.css';
 import store from './store';
-import Zhed from './container/Zhed';
-import registerServiceWorker from './registerServiceWorker';
+import Root from './components/Root';
+// import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Zhed />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('root')
 );
-registerServiceWorker();
+// registerServiceWorker();

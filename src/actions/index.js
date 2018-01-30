@@ -1,3 +1,35 @@
+// PackZhed
+export const INITIALIZE_PACK_ZHED = 'INITIALIZE_PACK_ZHED';
+export const UNLOCK_PACK_ZHED = 'UNLOCK_PACK_ZHED';
+
+function initializedPackZhed() {
+  return {
+    type: INITIALIZED_PACK_ZHED,
+  };
+}
+
+function initializePackZhed() {
+  
+}
+
+function shouldInitializePackZhed(state) {
+  const keys = Object.keys(state.packZhed);
+  if (keys.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function initializePackZhedIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldInitializePackZhed(getState())) {
+      return dispatch(initializePackZhed());
+    }
+  }
+}
+
+// MapZhed
 export const REQUEST_ZHED = 'REQUEST_ZHED';
 export const RECEIVE_ZHED = 'RECEIVE_ZHED';
 
@@ -18,41 +50,33 @@ function receiveZhed(level, zhed) {
 
 function fetchZhed(level) {
   return dispatch => {
-    dispatch(requestZhed(level))
+    dispatch(requestZhed(level));
     return fetch(`https://the-zhed.github.io/data-json/data/pack1/d.${level}.json`)
       .then(response => response.json())
-      .then(zhed => dispatch(receiveZhed(level, zhed)))
+      .then(zhed => dispatch(receiveZhed(level, zhed)));
   }
 }
 
 function shouldFetchZhed(state, level) {
-  const pack = state.packZhed[level]
+  const pack = state.packZhed[level];
   if (!pack) {
-    return true
+    return true;
   } else if (pack.isFetching) {
-    return false
+    return false;
   } else {
-    return pack.didInvalidate
+    return pack.didInvalidate;
   }
 }
 
 export function fetchZhedIfNeeded(level) {
   return (dispatch, getState) => {
     if (shouldFetchZhed(getState(), level)) {
-      return dispatch(fetchZhed(level))
+      return dispatch(fetchZhed(level));
     }
-  }
-}
-
-export const SELECT_ZHED = 'SELECT_ZHED';
-
-export function selectZhed(level) {
-  return {
-    type: SELECT_ZHED,
-    level
   };
 }
 
+// StageZhed
 export const SELECT_ZHED_BUTTON = 'SELECT_ZHED_BUTTON';
 export const SELECT_ZHED_DOT = 'SELECT_ZHED_DOT';
 export const RESTART_ZHED = 'RESTART_ZHED';
@@ -76,12 +100,12 @@ export function selectZhedDot({ rowIdx, colIdx }) {
 
 export function restartZhed() {
   return {
-    type: RESTART_ZHED
+    type: RESTART_ZHED,
   };
 }
 
 export function undoZhed() {
   return {
-    type: UNDO_ZHED
+    type: UNDO_ZHED,
   };
 }

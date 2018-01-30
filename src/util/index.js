@@ -1,27 +1,28 @@
-// return [
-//   {
-//     level: 'zhed-2',
-//     isPass: false,
-//   },
-//   {
-//     level: 'zhed-1',
-//     isPass: false,
-//   }
-// ];
+// return {
+//   1: { level: '1', enabled: true },
+//   2: { level: '2', enabled: false },
+// };
 export function makePackMap() {
-  let result = JSON.parse(window.localStorage.getItem('Zhed-App'));
-  if (result) {
-    return result;
-  }
-  result = [{ level: '1', enabled: true }];
-  for (let i = 2; i <= 100; i++) {
-    result.push({
+  const result = {};
+  for (let i = 1; i <= 100; i++) {
+    result[i] = {
       level: i.toString(),
-      enabled: false,
-    });
+      enabled: i === 1 ? true : false,
+    };
   }
-  window.localStorage.setItem('Zhed-App', JSON.stringify(result));
   return result;
+}
+
+const zhedApp = 'ZhedApp';
+
+export function loadLocalStorage() {
+  const data = JSON.parse(window.localStorage.getItem(zhedApp));
+  return data;
+}
+
+export function saveLocalStorage(data) {
+  window.localStorage.setItem(zhedApp, JSON.stringify(data));
+  return;
 }
 
 // return 1 or 2 or 3 or 4

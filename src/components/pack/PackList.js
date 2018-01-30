@@ -1,17 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-const PackList = ({ list, history }) => (
+const PackList = ({ packZhed, initializePack, history }) => (
   <div className="container">
     <div className="row">
-      {list.map((item) => (
-        <div className="col-3" key={item.level}>
+      {Object.keys(packZhed).map((item) => (
+        <div className="col-3" key={packZhed[item].level}>
           <button
-            onClick={() => history.push(`/zhed/${item.level}`)}
-            className="btn btn-dark"
-            disabled={!item.enabled}
+            className="btn btn-dark btn-block mb-3"
+            onClick={() => history.push(`/zhed/${packZhed[item].level}`)}
+            disabled={!packZhed[item].enabled}
           >
-            {item.level}
+            {packZhed[item].level}
           </button>
         </div>
       ))}

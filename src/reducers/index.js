@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import packZhed from './packZhed';
-import selectedZhed from './selectedZhed';
-import stagingZhed from './stagingZhed';
+import mapZhed from './mapZhed';
+import stageZhed from './stageZhed';
 
 const zhedApp = combineReducers({
   packZhed,
-  selectedZhed,
-  stagingZhed,
+  mapZhed,
+  stageZhed,
 });
 
 export default zhedApp;

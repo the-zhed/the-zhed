@@ -4,10 +4,8 @@ import {
   RESTART_ZHED,
   UNDO_ZHED,
 } from '../actions';
-// import level10 from '../schema/level10';
-import { randomMap, nullMap } from '../util';
 
-function stagingZhed(
+function stageZhed(
   state = {
     level: 'not found',
     backgroundMap: [],
@@ -28,4 +26,4 @@ function stagingZhed(
   }
 }
 
-export default stagingZhed;
+export default stageZhed;

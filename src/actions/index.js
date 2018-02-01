@@ -1,15 +1,28 @@
 // PackZhed
-export const INITIALIZE_PACK_ZHED = 'INITIALIZE_PACK_ZHED';
+export const INITIALIZED_PACK_ZHED = 'INITIALIZED_PACK_ZHED';
 export const UNLOCK_PACK_ZHED = 'UNLOCK_PACK_ZHED';
 
-function initializedPackZhed() {
-  return {
-    type: INITIALIZE_PACK_ZHED,
-  };
+function makePackZhed() {
+  const result = {};
+  for (let i = 1; i <= 100; i++) {
+    result[i] = {
+      level: i,
+      enabled: i === 1 ? true : false,
+    };
+  }
+  return result;
 }
 
 function initializePackZhed() {
-  
+  let pack = JSON.parse(window.localStorage.getItem('ZhedApp'));
+  if (!pack) {
+    pack = makePackZhed();
+    window.localStorage.setItem('ZhedApp', JSON.stringify(pack));
+  }
+  return {
+    type: INITIALIZED_PACK_ZHED,
+    pack,
+  };
 }
 
 function shouldInitializePackZhed(state) {

@@ -5,15 +5,9 @@ import Jumbotron from './pack/Jumbotron'
 import PackList from './pack/PackList'
 
 class Pack extends React.Component {
-  constructor(props) {
-    super(props)
-    // this.handleChange = this.handleChange.bind(this)
-    // this.handleRefreshClick = this.handleRefreshClick.bind(this)
-  }
-
   componentDidMount() {
-    const { initializePack } = this.props
-    initializePack()
+    const { dispatch } = this.props
+    dispatch(initializePackZhedIfNeeded())
   }
 
   render() {
@@ -22,7 +16,6 @@ class Pack extends React.Component {
         <Jumbotron />
         <PackList
           packZhed={this.props.packZhed}
-          initializePack={this.props.initializePack}
         />
       </div>
     );
@@ -35,15 +28,7 @@ function mapStateToProps(state) {
     packZhed,
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    initializePack: () => {
-      dispatch(initializePackZhedIfNeeded())
-    }
-  }
-}
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Pack)

@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PackList = ({ list }) => (
+const PackList = ({ packZhed }) => (
   <div className="container">
     <div className="row">
-      {list.map((item) => (
+      {Object.keys(packZhed).map((item) => (
         <div className="col-3" key={item.level}>
           {item.enabled ? (
-            <Link to={`/zhed/${item.level}`} className="btn btn-dark">
+            <Link to={`/zhed/${item.level}`} className="btn btn-dark btn-block mb-3">
               {item.level}
             </Link>
           ) : (
-            <button className="btn btn-dark" disabled>{item.level}</button>
+            <button className="btn btn-dark btn-block mb-3" disabled>
+              {item.level}
+            </button>
           )}
         </div>
       ))}

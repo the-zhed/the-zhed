@@ -1,49 +1,33 @@
 import {
-  REQUEST_ZHED,
-  RECEIVE_ZHED,
+  INITIALIZE_PACK_ZHED,
+  UNLOCK_PACK_ZHED,
 } from '../actions';
-import { makePackMap } from '../util';
 
-const initPackMap = makePackMap();
-
-function zhed(
-  state = {
-    isPass: false,
-    isFetching: false,
-    map: [],
-  },
-  action
-) {
-  switch (action.type) {
-    case REQUEST_ZHED:
-      return {
-        ...state,
-        isPass: false,
-        isFetching: true,
-        map: [],
-      };
-    case RECEIVE_ZHED:
-      return {
-        ...state,
-        isPass: false,
-        isFetching: false,
-        map: action.zhed.map,
-      };
-    default:
-      return state;
+function makePackZhed() {
+  const result = {};
+  for (let i = 1; i <= 100; i++) {
+    result[i] = {
+      level: i.toString(),
+      enabled: i === 1 ? true : false,
+    };
   }
+  return result;
 }
 
 function packZhed(
-  state = initPackMap,
+  state = {},
   action
 ) {
   switch (action.type) {
-    case REQUEST_ZHED:
-    case RECEIVE_ZHED:
+    case INITIALIZE_PACK_ZHED:
+      const newState = makePackZhed();
       return {
         ...state,
-        [action.level]: zhed(state[action.level], action)
+        ...newState,
+      };
+    case UNLOCK_PACK_ZHED:
+      return {
+
       };
     default:
       return state;

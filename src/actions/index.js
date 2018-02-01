@@ -4,7 +4,7 @@ export const UNLOCK_PACK_ZHED = 'UNLOCK_PACK_ZHED';
 
 function initializedPackZhed() {
   return {
-    type: INITIALIZED_PACK_ZHED,
+    type: INITIALIZE_PACK_ZHED,
   };
 }
 

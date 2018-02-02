@@ -25,7 +25,10 @@ export function saveLocalStorage(data) {
   return;
 }
 
-// return 1 or 2 or 3 or 4
+// return [
+//   [1, 2, 3, 4],
+//   [4, 4, 3, 3],
+// ];
 export function randomMap(arr) {
   return arr.map(row => {
     return row.map(col => Math.floor(Math.random() * (4)) + 1);

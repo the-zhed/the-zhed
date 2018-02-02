@@ -12,7 +12,7 @@ const ZhedTile = ({ background, zhedBlock, indicator, onSelectZhedButton, onSele
       : null
     }
     {indicator
-      ? <ZhedDot onClick={() => onSelectZhedDot()} />
+      ? <ZhedDot indicator={indicator} onClick={() => onSelectZhedDot()} />
       : null
     }
   </div>
@@ -21,7 +21,10 @@ const ZhedTile = ({ background, zhedBlock, indicator, onSelectZhedButton, onSele
 ZhedTile.propTypes = {
   background: PropTypes.number,
   zhedBlock: PropTypes.string,
-  indicator: PropTypes.bool,
+  indicator: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.number,
+  ]),
   onSelectZhedButton: PropTypes.func,
   onSelectZhedDot: PropTypes.func,
 };

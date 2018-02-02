@@ -44,7 +44,7 @@ export function initializePackZhedIfNeeded() {
       const pack = getLocalstorage('ZhedApp');
       return dispatch(initializePackZhed(pack));
     }
-  }
+  };
 }
 
 // MapZhed
@@ -69,7 +69,8 @@ function receiveZhed(level, zhed) {
 function fetchZhed(level) {
   return (dispatch) => {
     dispatch(requestZhed(level));
-    return fetch(`https://the-zhed.github.io/data-json/data/pack1/d.${level}.json`)
+    return fetch('/data/test.json')
+    // return fetch(`https://the-zhed.github.io/data-json/data/pack1/d.${level}.json`)
       .then(response => response.json())
       .then(zhed => dispatch(receiveZhed(level, zhed)))
       .then(action => dispatch(initializedStageZhed(level, action.zhed)))
@@ -131,17 +132,49 @@ function selectedZhedButton(indicatorMap) {
   };
 }
 
-function maekNewIndicatorMap(map, { rowIdx, colIdx }) {
-  console.log(map);
-  console.log({ rowIdx, colIdx });
+function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
+  const newIndicatorMap = map.indicatorMap.map((row) => row.slice());
+  const blockNumber = parseInt(col, 10);
+  const directionMap = [
+    { x:  0 , y: -1, n: blockNumber, d: 'up'    },
+    { x:  1 , y:  0, n: blockNumber, d: 'right' },
+    { x: -1 , y:  0, n: blockNumber, d: 'left'  },
+    { x:  0 , y:  1, n: blockNumber, d: 'down'  },
+  ];
+  directionMap.forEach((direction) => {
+    let indicatorValue = 0;
+    let row = rowIdx;
+    let col = colIdx;
+    while (indicatorValue < direction.n) {
+      row += direction.y;
+      col += direction.x;
+      if (
+        row >= 0
+        && row < map.zhedBlockMap.length
+        && col >= 0
+        && col < map.zhedBlockMap[0].length
+      ) {
+        const zhedBlock = map.zhedBlockMap[row][col];
+        if (zhedBlock === '0') {
+          indicatorValue += 1;
+          newIndicatorMap[row][col] = indicatorValue;
+        } else {
+          continue;
+        }
+      } else {
+        break;
+      }
+    }
+  });
+  return newIndicatorMap;
 }
 
-export function selectZhedButton({ rowIdx, colIdx }) {
+export function selectZhedButton({ rowIdx, colIdx, col }) {
   return (dispatch, getState) => {
     const map = getState().stageZhed.map;
-    const indicatorMap = maekNewIndicatorMap(map, { rowIdx, colIdx });
+    const indicatorMap = maekNewIndicatorMap(map, { rowIdx, colIdx, col });
     dispatch(selectedZhedButton(indicatorMap));
-  }
+  };
 }
 
 export function selectZhedDot({ rowIdx, colIdx }) {

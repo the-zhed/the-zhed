@@ -4,17 +4,21 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faRedo, faReply } from '@fortawesome/fontawesome-free-solid';
 import ZhedPanel from './ZhedPanel';
 
-const ZhedBoard = ({ stagingZhed, onSelectZhedButton, onSelectZhedDot, onRestartZhed, onUndoZhed }) => (
+const ZhedBoard = ({ stageZhed, onSelectZhedButton, onSelectZhedDot, onRestartZhed, onUndoZhed }) => (
   <div className="card">
     <div className="card-header">
-      ZhedBoard: {stagingZhed.level}
+      ZhedBoard: {stageZhed.level}
     </div>
     <div className="card-body">
-      {/* <ZhedPanel
-        map={stagingZhed}
-        onSelectZhedButton={coordinate => onSelectZhedButton(coordinate)}
-        onSelectZhedDot={coordinate => onSelectZhedDot(coordinate)}
-      /> */}
+      {stageZhed.level ? (
+        <ZhedPanel
+          map={stageZhed.map}
+          onSelectZhedButton={({ rowIdx, colIdx, col }) => onSelectZhedButton({ rowIdx, colIdx, col })}
+          onSelectZhedDot={({ rowIdx, colIdx, col }) => onSelectZhedDot({ rowIdx, colIdx, col })}
+        />
+      ) : (
+        <p>loading...</p>
+      )}
     </div>
     <div className="card-footer text-muted">
       <button
@@ -36,7 +40,7 @@ const ZhedBoard = ({ stagingZhed, onSelectZhedButton, onSelectZhedDot, onRestart
 )
 
 ZhedBoard.propTypes = {
-  stagingZhed: PropTypes.object,
+  stageZhed: PropTypes.object,
   onSelectZhedButton: PropTypes.func,
   onSelectZhedDot: PropTypes.func,
   onRestartZhed: PropTypes.func,

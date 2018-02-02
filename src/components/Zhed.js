@@ -1,30 +1,63 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchZhedIfNeeded } from '../actions'
+import {
+  fetchZhedIfNeeded,
+  selectZhedButton,
+  selectZhedDot,
+  restartZhed,
+  undoZhed,
+} from '../actions'
+import ZhedBoard from './zhed/ZhedBoard'
 
 class Zhed extends React.Component {
   componentDidMount() {
-    const { dispatch, match } = this.props
-    dispatch(fetchZhedIfNeeded(match.params.level))
+    const { fetchZhed, match } = this.props
+    fetchZhed(match.params.level)
   }
+
   render() {
+    const { stageZhed, selectZhedButton, selectZhedDot } = this.props
     return (
-      <div>
-        Zhed {this.props.match.params.level}
-      </div>
+      <ZhedBoard
+        stageZhed={stageZhed}
+        onSelectZhedButton={selectZhedButton}
+        onSelectZhedDot={selectZhedDot}
+      />
     )
   }
 }
 
-function mapStateToProps(state) {
-  const { packZhed, mapZhed, stateZhed } = state
+const mapStateToProps = (state) => {
+  const { stageZhed } = state
   return {
-    packZhed,
-    mapZhed,
-    stateZhed,
+    stageZhed: stageZhed,
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Zhed))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchZhed: level => {
+      dispatch(fetchZhedIfNeeded(level))
+    },
+    selectZhedButton: ({ rowIdx, colIdx, col }) => {
+      dispatch(selectZhedButton({ rowIdx, colIdx, col }))
+    },
+    selectZhedDot: ({ rowIdx, colIdx }) => {
+      dispatch(selectZhedDot({ rowIdx, colIdx }))
+    },
+    restartZhed: () => {
+      dispatch(restartZhed())
+    },
+    undoZhed: () => {
+      dispatch(undoZhed())
+    },
+  }
+}
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Zhed)
+)

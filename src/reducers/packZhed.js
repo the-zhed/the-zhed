@@ -1,5 +1,5 @@
 import {
-  INITIALIZED_PACK_ZHED,
+  INITIALIZE_PACK_ZHED,
   UNLOCK_PACK_ZHED,
 } from '../actions';
 
@@ -8,7 +8,7 @@ function packZhed(
   action
 ) {
   switch (action.type) {
-    case INITIALIZED_PACK_ZHED:
+    case INITIALIZE_PACK_ZHED:
       return {
         ...state,
         ...action.pack

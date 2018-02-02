@@ -1,5 +1,5 @@
 // PackZhed
-export const INITIALIZED_PACK_ZHED = 'INITIALIZED_PACK_ZHED';
+export const INITIALIZE_PACK_ZHED = 'INITIALIZE_PACK_ZHED';
 export const UNLOCK_PACK_ZHED = 'UNLOCK_PACK_ZHED';
 
 function makePackZhed() {
@@ -13,14 +13,18 @@ function makePackZhed() {
   return result;
 }
 
-function initializePackZhed() {
-  let pack = JSON.parse(window.localStorage.getItem('ZhedApp'));
+function getLocalstorage(appName) {
+  let pack = JSON.parse(window.localStorage.getItem(appName));
   if (!pack) {
     pack = makePackZhed();
-    window.localStorage.setItem('ZhedApp', JSON.stringify(pack));
+    window.localStorage.setItem(appName, JSON.stringify(pack));
   }
+  return pack;
+}
+
+function initializePackZhed(pack) {
   return {
-    type: INITIALIZED_PACK_ZHED,
+    type: INITIALIZE_PACK_ZHED,
     pack,
   };
 }
@@ -37,7 +41,8 @@ function shouldInitializePackZhed(state) {
 export function initializePackZhedIfNeeded() {
   return (dispatch, getState) => {
     if (shouldInitializePackZhed(getState())) {
-      return dispatch(initializePackZhed());
+      const pack = getLocalstorage('ZhedApp');
+      return dispatch(initializePackZhed(pack));
     }
   }
 }
@@ -62,16 +67,17 @@ function receiveZhed(level, zhed) {
 }
 
 function fetchZhed(level) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(requestZhed(level));
     return fetch(`https://the-zhed.github.io/data-json/data/pack1/d.${level}.json`)
       .then(response => response.json())
-      .then(zhed => dispatch(receiveZhed(level, zhed)));
+      .then(zhed => dispatch(receiveZhed(level, zhed)))
+      .then(action => dispatch(initializedStageZhed(level, action.zhed)))
   }
 }
 
 function shouldFetchZhed(state, level) {
-  const pack = state.packZhed[level];
+  const pack = state.mapZhed[level];
   if (!pack) {
     return true;
   } else if (pack.isFetching) {
@@ -90,17 +96,52 @@ export function fetchZhedIfNeeded(level) {
 }
 
 // StageZhed
+export const INITIALIZE_STAGE_ZHED = 'INITIALIZE_STAGE_ZHED';
 export const SELECT_ZHED_BUTTON = 'SELECT_ZHED_BUTTON';
 export const SELECT_ZHED_DOT = 'SELECT_ZHED_DOT';
 export const RESTART_ZHED = 'RESTART_ZHED';
 export const UNDO_ZHED = 'UNDO_ZHED';
 
-export function selectZhedButton({ rowIdx, colIdx }) {
+function randomMap(arr) {
+  return arr.map(row => {
+    return row.map(col => Math.floor(Math.random() * (4)) + 1);
+  });
+}
+
+function nullMap(arr) {
+  return arr.map(row => {
+    return row.map(col => false);
+  });
+}
+
+function initializedStageZhed(level, zhed) {
+  return {
+    type: INITIALIZE_STAGE_ZHED,
+    level: level,
+    backgroundMap: randomMap(zhed.map),
+    zhedBlockMap: zhed.map,
+    indicatorMap: nullMap(zhed.map),
+  }
+}
+
+function selectedZhedButton(indicatorMap) {
   return {
     type: SELECT_ZHED_BUTTON,
-    rowIdx,
-    colIdx,
+    indicatorMap,
   };
+}
+
+function maekNewIndicatorMap(map, { rowIdx, colIdx }) {
+  console.log(map);
+  console.log({ rowIdx, colIdx });
+}
+
+export function selectZhedButton({ rowIdx, colIdx }) {
+  return (dispatch, getState) => {
+    const map = getState().stageZhed.map;
+    const indicatorMap = maekNewIndicatorMap(map, { rowIdx, colIdx });
+    dispatch(selectedZhedButton(indicatorMap));
+  }
 }
 
 export function selectZhedDot({ rowIdx, colIdx }) {

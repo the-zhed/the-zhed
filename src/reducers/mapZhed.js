@@ -5,7 +5,6 @@ import {
 
 function zhed(
   state = {
-    isPass: false,
     isFetching: false,
     map: [],
   },

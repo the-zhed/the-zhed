@@ -4,7 +4,6 @@ import ZhedTile from './ZhedTile';
 
 const ZhedPanel = ({ map, onSelectZhedButton, onSelectZhedDot }) => (
   <div>
-    ZhedPanel
     {map.zhedBlockMap.map((row, rowIdx) => (
       <div className="d-flex justify-content-center" key={rowIdx}>
         {row.map((col, colIdx) => (
@@ -13,8 +12,8 @@ const ZhedPanel = ({ map, onSelectZhedButton, onSelectZhedDot }) => (
             background={map.backgroundMap[rowIdx][colIdx]}
             zhedBlock={col}
             indicator={map.indicatorMap[rowIdx][colIdx]}
-            onSelectZhedButton={() => onSelectZhedButton({ rowIdx, colIdx })}
-            onSelectZhedDot={() => onSelectZhedDot({ rowIdx, colIdx })}
+            onSelectZhedButton={() => onSelectZhedButton({ rowIdx, colIdx, col })}
+            onSelectZhedDot={() => onSelectZhedDot({ rowIdx, colIdx, col })}
           />
         ))}
       </div>

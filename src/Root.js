@@ -1,17 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Pack from './Pack';
-import Zhed from './Zhed';
+import Home from './components/Home';
+import About from './components/About';
+import Pack from './components/Pack';
+import Zhed from './components/Zhed';
+import store from './store';
 
-const Root = ({ store }) => (
+const Root = () => (
   <Provider store={store}>
     <Router>
       <div>
@@ -29,9 +29,5 @@ const Root = ({ store }) => (
     </Router>
   </Provider>
 );
-
-Root.propTypes = {
-  store: PropTypes.object.isRequired
-};
 
 export default Root;

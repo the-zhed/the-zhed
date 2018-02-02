@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { initializePackZhedIfNeeded } from '../actions'
 import Jumbotron from './pack/Jumbotron'
@@ -22,7 +23,7 @@ class Pack extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const { packZhed } = state
   return {
     packZhed,

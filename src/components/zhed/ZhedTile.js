@@ -6,7 +6,7 @@ import ZhedDot from './ZhedDot';
 import './ZhedTile.css';
 
 const ZhedTile = ({ background, zhedBlock, indicator, onSelectZhedButton, onSelectZhedDot }) => (
-  <div className={classnames('Zhed-tile', 'p-1', `gray-${background}00`)}>
+  <div className={classnames('Zhed-tile', 'text-center', 'p-1', `gray-${background}00`)}>
     {zhedBlock !== '0'
       ? <ZhedButton block={zhedBlock} onClick={() => onSelectZhedButton()} />
       : null

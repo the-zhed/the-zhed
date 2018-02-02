@@ -99,6 +99,7 @@ export function fetchZhedIfNeeded(level) {
 // StageZhed
 export const INITIALIZE_STAGE_ZHED = 'INITIALIZE_STAGE_ZHED';
 export const SELECT_ZHED_BUTTON = 'SELECT_ZHED_BUTTON';
+export const MAKED_ZHED_BLOCKS = 'MAKED_ZHED_BLOCKS';
 export const SELECT_ZHED_DOT = 'SELECT_ZHED_DOT';
 export const RESTART_ZHED = 'RESTART_ZHED';
 export const UNDO_ZHED = 'UNDO_ZHED';
@@ -133,13 +134,23 @@ function selectedZhedButton(indicatorMap) {
 }
 
 function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
-  const newIndicatorMap = map.indicatorMap.map((row) => row.slice());
+  const newIndicatorMap = nullMap(map.indicatorMap);
+  const blocks = {
+    up: [],
+    right: [],
+    down: [],
+    left: [],
+  };
+  if (map.indicatorMap[rowIdx][colIdx] === 0) {
+    return { newIndicatorMap, blocks };
+  }
+
   const blockNumber = parseInt(col, 10);
   const directionMap = [
     { x:  0 , y: -1, n: blockNumber, d: 'up'    },
     { x:  1 , y:  0, n: blockNumber, d: 'right' },
-    { x: -1 , y:  0, n: blockNumber, d: 'left'  },
     { x:  0 , y:  1, n: blockNumber, d: 'down'  },
+    { x: -1 , y:  0, n: blockNumber, d: 'left'  },
   ];
   directionMap.forEach((direction) => {
     let indicatorValue = 0;
@@ -158,6 +169,8 @@ function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
         if (zhedBlock === '0') {
           indicatorValue += 1;
           newIndicatorMap[row][col] = indicatorValue;
+
+          blocks[direction.d].push({ row, col });
         } else {
           continue;
         }
@@ -166,14 +179,24 @@ function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
       }
     }
   });
-  return newIndicatorMap;
+  newIndicatorMap[rowIdx][colIdx] = 0;
+  return { newIndicatorMap, blocks };
+}
+
+function makeBlock(blocks) {
+  return {
+    type: MAKED_ZHED_BLOCKS,
+    blocks,
+  };
 }
 
 export function selectZhedButton({ rowIdx, colIdx, col }) {
   return (dispatch, getState) => {
     const map = getState().stageZhed.map;
-    const indicatorMap = maekNewIndicatorMap(map, { rowIdx, colIdx, col });
-    dispatch(selectedZhedButton(indicatorMap));
+    const { newIndicatorMap, blocks } = maekNewIndicatorMap(map, { rowIdx, colIdx, col });
+    console.log(blocks);
+    dispatch(selectedZhedButton(newIndicatorMap));
+    dispatch(makeBlock(blocks));
   };
 }
 

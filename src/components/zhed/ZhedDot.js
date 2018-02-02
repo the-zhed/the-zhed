@@ -1,11 +1,16 @@
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/fontawesome-free-solid';
 import './ZhedDot.css';
 
 const ZhedDot = ({ indicator, onClick }) => (
-  <div className="dot dot-1" onClick={() => onClick()}>
-    Dot
-  </div>
+  <FontAwesomeIcon
+    icon={faCircle}
+    className={classnames('dot', `dot-${indicator}`, 'align-bottom')}
+    onClick={() => onClick()}
+  />
 )
 
 ZhedDot.propTypes = {

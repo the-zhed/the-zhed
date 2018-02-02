@@ -1,14 +1,22 @@
-@keyframes bounce {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(.8); }
-  100% { transform: scale(1); }
+@keyframes beat {
+  from {
+    transform: scale(1);
+    opacity: .6;
+  }
+  to {
+    transform: scale(.8);
+    opacity: .3;
+  }
 }
 
-.dot {
-  animation-duration: 2s;
+.dot {  
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-name: bounce;
+  animation-direction: alternate;
+  animation-play-state: running;
+  animation-name: beat;
+  opacity: .0;
 }
 
 .dot-1 { animation-delay: .1s; }
@@ -19,4 +27,4 @@
 .dot-6 { animation-delay: .6s; }
 .dot-7 { animation-delay: .7s; }
 .dot-8 { animation-delay: .8s; }
-.dot-9 { animation-delay: .1s; }
+.dot-9 { animation-delay: .9s; }

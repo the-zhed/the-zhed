@@ -1,7 +1,7 @@
 # Zhed
 
 store
-```js
+```javascript
 {
   packZhed: {
     1: { level: '1', enabled: true },
@@ -26,7 +26,7 @@ store
 ```
 
 `stagingZhed`
-```js
+```javascript
 {
   backgroundMap: [
     [    4,    1 ,    3 ,    2 ,    3 ,    4 ,    1 ,    2 ],

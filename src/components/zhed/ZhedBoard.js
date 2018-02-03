@@ -13,8 +13,8 @@ const ZhedBoard = ({ stageZhed, onSelectZhedButton, onSelectZhedDot, onRestartZh
       {stageZhed.level ? (
         <ZhedPanel
           map={stageZhed.map}
-          onSelectZhedButton={({ rowIdx, colIdx, col }) => onSelectZhedButton({ rowIdx, colIdx, col })}
-          onSelectZhedDot={({ rowIdx, colIdx, col }) => onSelectZhedDot({ rowIdx, colIdx, col })}
+          onSelectZhedButton={({ rowIdx, colIdx }) => onSelectZhedButton({ rowIdx, colIdx })}
+          onSelectZhedDot={({ rowIdx, colIdx }) => onSelectZhedDot({ rowIdx, colIdx })}
         />
       ) : (
         <p>loading...</p>

@@ -60,18 +60,22 @@ store
   ],
   blocks: {
     up: [
+      { row: 5, col: 4 },
       { row: 4, col: 4 },
       { row: 3, col: 4 }
     ],
     right: [
+      { row: 5, col: 4 },
       { row: 5, col: 5 },
       { row: 5, col: 6 }
     ],
     down: [
+      { row: 5, col: 4 },
       { row: 6, col: 4 },
       { row: 7, col: 4 }
     ],
     left: [
+      { row: 5, col: 4 },
       { row: 5, col: 3 },
       { row: 5, col: 1 }
     ],

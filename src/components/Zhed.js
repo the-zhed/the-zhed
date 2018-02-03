@@ -40,8 +40,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchZhed: level => {
       dispatch(fetchZhedIfNeeded(level))
     },
-    selectZhedButton: ({ rowIdx, colIdx, col }) => {
-      dispatch(selectZhedButton({ rowIdx, colIdx, col }))
+    selectZhedButton: ({ rowIdx, colIdx }) => {
+      dispatch(selectZhedButton({ rowIdx, colIdx }))
     },
     selectZhedDot: ({ rowIdx, colIdx }) => {
       dispatch(selectZhedDot({ rowIdx, colIdx }))

@@ -12,8 +12,8 @@ const ZhedPanel = ({ map, onSelectZhedButton, onSelectZhedDot }) => (
             background={map.backgroundMap[rowIdx][colIdx]}
             zhedBlock={col}
             indicator={map.indicatorMap[rowIdx][colIdx]}
-            onSelectZhedButton={() => onSelectZhedButton({ rowIdx, colIdx, col })}
-            onSelectZhedDot={() => onSelectZhedDot({ rowIdx, colIdx, col })}
+            onSelectZhedButton={() => onSelectZhedButton({ rowIdx, colIdx })}
+            onSelectZhedDot={() => onSelectZhedDot({ rowIdx, colIdx })}
           />
         ))}
       </div>

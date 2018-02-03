@@ -100,6 +100,7 @@ export function fetchZhedIfNeeded(level) {
 export const INITIALIZE_STAGE_ZHED = 'INITIALIZE_STAGE_ZHED';
 export const SELECT_ZHED_BUTTON = 'SELECT_ZHED_BUTTON';
 export const MAKED_ZHED_BLOCKS = 'MAKED_ZHED_BLOCKS';
+export const STOCK_HISTORY = 'STOCK_HISTORY';
 export const SELECT_ZHED_DOT = 'SELECT_ZHED_DOT';
 export const RESTART_ZHED = 'RESTART_ZHED';
 export const UNDO_ZHED = 'UNDO_ZHED';
@@ -133,7 +134,7 @@ function selectedZhedButton(indicatorMap) {
   };
 }
 
-function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
+function maekNewIndicatorMap(map, { rowIdx, colIdx }) {
   const newIndicatorMap = nullMap(map.indicatorMap);
   const blocks = {
     up: [],
@@ -145,7 +146,7 @@ function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
     return { newIndicatorMap, blocks };
   }
 
-  const blockNumber = parseInt(col, 10);
+  const blockNumber = parseInt(map.zhedBlockMap[rowIdx][colIdx], 10);
   const directionMap = [
     { x:  0 , y: -1, n: blockNumber, d: 'up'    },
     { x:  1 , y:  0, n: blockNumber, d: 'right' },
@@ -156,6 +157,8 @@ function maekNewIndicatorMap(map, { rowIdx, colIdx, col }) {
     let indicatorValue = 0;
     let row = rowIdx;
     let col = colIdx;
+    blocks[direction.d].push({ row: rowIdx, col: colIdx });
+
     while (indicatorValue < direction.n) {
       row += direction.y;
       col += direction.x;
@@ -190,22 +193,66 @@ function makeBlock(blocks) {
   };
 }
 
-export function selectZhedButton({ rowIdx, colIdx, col }) {
+export function selectZhedButton({ rowIdx, colIdx }) {
   return (dispatch, getState) => {
     const map = getState().stageZhed.map;
-    const { newIndicatorMap, blocks } = maekNewIndicatorMap(map, { rowIdx, colIdx, col });
-    console.log(blocks);
+    const { newIndicatorMap, blocks } = maekNewIndicatorMap(map, { rowIdx, colIdx });
     dispatch(selectedZhedButton(newIndicatorMap));
     dispatch(makeBlock(blocks));
   };
 }
 
-export function selectZhedDot({ rowIdx, colIdx }) {
+function stockZhedBlockMap(newHistory) {
+  return {
+    type: STOCK_HISTORY,
+    newHistory,
+  };
+}
+
+function makeNewHistory(map) {
+  const newHistory = [
+    ...map.history,
+    map.zhedBlockMap
+  ];
+  return newHistory;
+}
+
+function selectedZhedDot(newZhedBlockMap) {
   return {
     type: SELECT_ZHED_DOT,
-    rowIdx,
-    colIdx,
+    newZhedBlockMap,
   };
+}
+
+function copyDeepMap(arr) {
+  return arr.map(row => {
+    return row.map(col => col);
+  });
+}
+
+function drawZhedBlock(map, { rowIdx, colIdx }) {
+  const newZhedBlockMap = copyDeepMap(map.zhedBlockMap);
+  let selectedDirection;
+  for (let direction in map.blocks) {
+    const sameBlcok = map.blocks[direction].find(block => block.row === rowIdx && block.col === colIdx)
+    if (sameBlcok) {
+      selectedDirection = direction;
+    }
+  };
+
+  map.blocks[selectedDirection].forEach((block) => {
+    newZhedBlockMap[block.row][block.col] = 'B';
+  });
+  return newZhedBlockMap;
+}
+
+export function selectZhedDot({ rowIdx, colIdx }) {
+  return (dispatch, getState) => {
+    const map = getState().stageZhed.map;
+    // todo resetIndcatorMap
+    dispatch(stockZhedBlockMap(makeNewHistory(map)));
+    dispatch(selectedZhedDot(drawZhedBlock(map, { rowIdx, colIdx })));
+  }
 }
 
 export function restartZhed() {

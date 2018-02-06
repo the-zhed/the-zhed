@@ -1,22 +1,10 @@
-import {
-  INITIALIZE_PACK_ZHED,
-  UNLOCK_PACK_ZHED,
-} from '../actions';
+import { getLocalstorage } from '../util';
 
 function packZhed(
-  state = {},
+  state = {...getLocalstorage()},
   action
 ) {
   switch (action.type) {
-    case INITIALIZE_PACK_ZHED:
-      return {
-        ...state,
-        ...action.pack
-      };
-    case UNLOCK_PACK_ZHED:
-      return {
-
-      };
     default:
       return state;
   }

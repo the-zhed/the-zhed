@@ -2,28 +2,28 @@
 //   1: { level: '1', enabled: true },
 //   2: { level: '2', enabled: false },
 // };
-export function makePackMap() {
+export function makePackZhed() {
   const result = {};
   for (let i = 1; i <= 100; i++) {
     result[i] = {
       level: i.toString(),
       enabled: i === 1 ? true : false,
+      package: parseInt((i / 20), 10) + 1,
     };
   }
   return result;
 }
 
-const zhedApp = 'ZhedApp';
-
-export function loadLocalStorage() {
-  const data = JSON.parse(window.localStorage.getItem(zhedApp));
-  return data;
+export function getLocalstorage() {
+  const appName = 'ZhedApp';
+  let pack = JSON.parse(window.localStorage.getItem(appName));
+  if (!pack) {
+    pack = makePackZhed();
+    window.localStorage.setItem(appName, JSON.stringify(pack));
+  }
+  return pack;
 }
 
-export function saveLocalStorage(data) {
-  window.localStorage.setItem(zhedApp, JSON.stringify(data));
-  return;
-}
 
 // return [
 //   [1, 2, 3, 4],

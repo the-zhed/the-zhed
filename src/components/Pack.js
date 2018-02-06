@@ -1,22 +1,17 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { initializePackZhedIfNeeded } from '../actions'
 import Jumbotron from './pack/Jumbotron'
 import PackList from './pack/PackList'
 
 class Pack extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(initializePackZhedIfNeeded())
-  }
-
   render() {
+    const { packZhed } = this.props
     return (
       <div>
         <Jumbotron />
         <PackList
-          packZhed={this.props.packZhed}
+          packZhed={packZhed}
         />
       </div>
     );

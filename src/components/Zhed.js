@@ -31,7 +31,7 @@ class Zhed extends React.Component {
 const mapStateToProps = (state) => {
   const { stageZhed } = state
   return {
-    stageZhed: stageZhed,
+    stageZhed,
   }
 }
 

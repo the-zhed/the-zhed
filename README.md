@@ -3,18 +3,23 @@
 store
 ```javascript
 {
-  packZhed: {
-    1: { level: '1', enabled: true },
-    2: { level: '2', enabled: false },
-    3: { level: '3', enabled: false },
+  currentPack: 1,
+  packList: {
+    '1': { level: 1, enabled: true,  pack: 1 },
+    '2': { level: 2, enabled: false, pack: 1 },
+    '3': { level: 3, enabled: false, pack: 1 },
   },
-  mapZhed: {
-    '1': {
-      level: '1',
-      map: [
-        [],[],[],[],[]
-      ]
-    }
+  currentLevel: '',
+  blockMapList: {
+    '1': [
+      [],[],[],[],[]
+    ],
+    '2': [
+      [],[],[],[],[]
+    ],
+    '3': [
+      [],[],[],[],[]
+    ],
   },
   stagingZhed: {
     level: 'not found',
@@ -29,16 +34,16 @@ store
 ```javascript
 {
   backgroundMap: [
-    [    4,    1 ,    3 ,    2 ,    3 ,    4 ,    1 ,    2 ],
-    [    1,    1 ,    3 ,    4 ,    1 ,    3 ,    2 ,    3 ],
-    [    4,    1 ,    2 ,    4 ,    2 ,    4 ,    3 ,    2 ],
-    [    1,    2 ,    2 ,    4 ,    4 ,    4 ,    2 ,    2 ],
-    [    4,    4 ,    4 ,    4 ,    3 ,    2 ,    1 ,    1 ],
-    [    4,    3 ,    2 ,    4 ,    3 ,    4 ,    4 ,    2 ],
-    [    3,    4 ,    4 ,    2 ,    2 ,    2 ,    2 ,    2 ],
-    [    3,    1 ,    1 ,    1 ,    3 ,    2 ,    4 ,    1 ]
+    [   4 ,    1 ,    3 ,    2 ,    3 ,    4 ,    1 ,    2 ],
+    [   1 ,    1 ,    3 ,    4 ,    1 ,    3 ,    2 ,    3 ],
+    [   4 ,    1 ,    2 ,    4 ,    2 ,    4 ,    3 ,    2 ],
+    [   1 ,    2 ,    2 ,    4 ,    4 ,    4 ,    2 ,    2 ],
+    [   4 ,    4 ,    4 ,    4 ,    3 ,    2 ,    1 ,    1 ],
+    [   4 ,    3 ,    2 ,    4 ,    3 ,    4 ,    4 ,    2 ],
+    [   3 ,    4 ,    4 ,    2 ,    2 ,    2 ,    2 ,    2 ],
+    [   3 ,    1 ,    1 ,    1 ,    3 ,    2 ,    4 ,    1 ]
   ],
-  zhedBlockMap: [
+  blockMap: [
     [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"],
     [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"],
     [  "0",   "0",   "0",   "2",   "0",   "0",   "Z",   "0"],
@@ -48,40 +53,42 @@ store
     [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"],
     [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"]
   ],
-  indicator: [
-    [false, false, false, false, false, false, false, false]
-    [false, false, false, false, false, false, false, false]
-    [false, false, false, false, false, false, false, false]
-    [false, false, false, false,     2, false, false, false]
-    [false, false, false, false,     1, false, false, false]
-    [false,     2, false,     1,     0,     1,     2, false]
-    [false, false, false, false,     1, false, false, false]
+  indicatorMap: [
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false, false, false, false, false],
+    [false, false, false, false,     2, false, false, false],
+    [false, false, false, false,     1, false, false, false],
+    [false,     2, false,     1,     0,     1,     2, false],
+    [false, false, false, false,     1, false, false, false],
     [false, false, false, false,     2, false, false, false]
   ],
-  blocks: {
-    up: [
+  indicatorList: {
+    'up': [
       { row: 5, col: 4 },
       { row: 4, col: 4 },
       { row: 3, col: 4 }
     ],
-    right: [
+    'right': [
       { row: 5, col: 4 },
       { row: 5, col: 5 },
       { row: 5, col: 6 }
     ],
-    down: [
+    'down': [
       { row: 5, col: 4 },
       { row: 6, col: 4 },
       { row: 7, col: 4 }
     ],
-    left: [
+    'left': [
       { row: 5, col: 4 },
       { row: 5, col: 3 },
       { row: 5, col: 1 }
     ],
   },
-  history: [
-
+  blockMapHistory: [
+    [], // init
+    [], // first
+    [], // last
   ]
 }
 ```

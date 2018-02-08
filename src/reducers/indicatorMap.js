@@ -1,7 +1,7 @@
 import {
   RESET_INDICATOR_MAP,
   UNFOLD_INDICATOR_MAP
-} from '../actions';
+} from '../actions/indicatorMap';
 
 function indicatorMap(
   state = [],

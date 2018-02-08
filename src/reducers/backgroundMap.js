@@ -1,4 +1,4 @@
-import { INITIALIZE_BG_MAP } from '../actions';
+import { INITIALIZE_BG_MAP } from '../actions/backgroundMap';
 
 function backgroundMap(
   state = [],

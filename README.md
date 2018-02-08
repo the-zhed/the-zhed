@@ -21,18 +21,6 @@ store
       [],[],[],[],[]
     ],
   },
-  stagingZhed: {
-    level: 'not found',
-    backgroundMap: [],
-    zhedBlockMap: [],
-    indicatorMap: [],
-  }
-}
-```
-
-`stagingZhed`
-```javascript
-{
   backgroundMap: [
     [   4 ,    1 ,    3 ,    2 ,    3 ,    4 ,    1 ,    2 ],
     [   1 ,    1 ,    3 ,    4 ,    1 ,    3 ,    2 ,    3 ],

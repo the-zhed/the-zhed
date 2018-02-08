@@ -1,7 +1,7 @@
 import {
   INITIALIZE_BLOCK_MAP,
   UNFOLD_BLOCK_MAP
-} from '../actions';
+} from '../actions/blockMap';
 
 function blockMap(
   state = [],

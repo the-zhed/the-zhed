@@ -1,7 +1,7 @@
 import {
   INITIALIZE_PACK_LIST,
   ENABLED_LEVEL_PACK
-} from '../actions';
+} from '../actions/packList';
 
 function packList(
   state = {},

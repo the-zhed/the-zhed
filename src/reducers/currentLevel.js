@@ -1,4 +1,4 @@
-import { SELECT_CURRENT_LEVEL } from '../actions';
+import { SELECT_CURRENT_LEVEL } from '../actions/currentLevel';
 
 function currentLevel(
   state = '',

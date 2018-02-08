@@ -1,4 +1,4 @@
-import { SELECT_CURRENT_PACK } from '../actions';
+import { SELECT_CURRENT_PACK } from '../actions/currentPack';
 
 function currentPack(
   state = 1,

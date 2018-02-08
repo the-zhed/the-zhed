@@ -1,7 +1,7 @@
 import { 
   REQUEST_BLOCK,
   RECEIVE_BLOCK
-} from '../actions';
+} from '../actions/blockMapList';
 
 function blockMapList(
   state = {},

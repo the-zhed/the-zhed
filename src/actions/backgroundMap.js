@@ -1,4 +1,4 @@
-export const INITIALIZE_BG_MAP = 'backgroundMap/INITIALIZE_BG_MAP';
+import { INITIALIZE_BG_MAP } from '../contants/ActionTypes';
 
 function initializeBackgroundMap(map) {
   return {

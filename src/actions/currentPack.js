@@ -1,4 +1,4 @@
-export const SELECT_CURRENT_PACK = 'currentPack/SELECT_CURRENT_PACK';
+import { SELECT_CURRENT_PACK } from '../contants/ActionTypes';
 
 export function selectCurrentPack(pack) {
   return {

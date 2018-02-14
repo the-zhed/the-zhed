@@ -1,5 +1,7 @@
-export const RESET_INDICATOR_MAP = 'indicatorMap/RESET_INDICATOR_MAP';
-export const UNFOLD_INDICATOR_MAP = 'indicatorMap/UNFOLD_INDICATOR_MAP';
+import {
+  RESET_INDICATOR_MAP,
+  UNFOLD_INDICATOR_MAP,
+} from '../contants/ActionTypes';
 
 function resetIndicatorMap(map) {
   return {

@@ -1,4 +1,4 @@
-export const SELECT_CURRENT_LEVEL = 'currentLevel/SELECT_CURRENT_LEVEL';
+import { SELECT_CURRENT_LEVEL } from '../contants/ActionTypes';
 
 export function selectCurrentLevel(level) {
   return {

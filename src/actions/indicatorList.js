@@ -1,5 +1,7 @@
-export const RESET_INDICATOR_LIST = 'indicatorList/RESET_INDICATOR_LIST';
-export const STACK_INDICATOR_LIST = 'indicatorList/STACK_INDICATOR_LIST';
+import {
+  RESET_INDICATOR_LIST,
+  STACK_INDICATOR_LIST,
+} from '../contants/ActionTypes';
 
 export function resetIndicatorList() {
   return {

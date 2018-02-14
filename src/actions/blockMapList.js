@@ -1,5 +1,7 @@
-export const REQUEST_BLOCK = 'blockMapList/REQUEST_BLOCK';
-export const RECEIVE_BLOCK = 'blockMapList/RECEIVE_BLOCK';
+import {
+  REQUEST_BLOCK,
+  RECEIVE_BLOCK,
+} from '../contants/ActionTypes';
 
 function reqeustBlock(level) {
   return {

@@ -1,7 +1,9 @@
-export const INITIALIZE_BLOCK_MAP = 'blockMap/INITIALIZE_BLOCK_MAP';
-export const UNFOLD_BLOCK_MAP = 'blockMap/UNFOLD_BLOCK_MAP';
-export const RESTART_BLOCK_MAP = 'blockMap/RESTART_BLOCK_MAP';
-export const UNDO_BLOCK_MAP = 'blockMap/UNDO_BLOCK_MAP';
+import {
+  INITIALIZE_BLOCK_MAP,
+  UNFOLD_BLOCK_MAP,
+  RESTART_BLOCK_MAP,
+  UNDO_BLOCK_MAP,
+} from '../contants/ActionTypes';
 
 export function initializeBlockMap(map) {
   return {

@@ -1,5 +1,7 @@
-export const INITIALIZE_PACK_LIST = 'packList/INITIALIZE_PACK_LIST';
-export const ENABLED_LEVEL_PACK = 'packList/ENABLED_LEVEL_PACK';
+import {
+  INITIALIZE_PACK_LIST,
+  ENABLED_LEVEL_PACK,
+} from '../contants/ActionTypes';
 
 function initializePackList(list) {
   return {

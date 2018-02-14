@@ -18,10 +18,14 @@ Zhed Actions
   - `indicatorMap/RESET_INDICATOR_MAP`: 방향점맵 리셋하기
   - `indicatorList/UNFOLD_INDICATOR_MAP`: 방향점리스트 등록하기
   - `indicatorMap/UNFOLD_INDICATOR_MAP`: 방향점 표시하기
-- selectZhedDot (블록방향버튼 누르기)
+- selectZhedDot (방향점버튼 누르기)
   - `indicatorMap/RESET_INDICATOR_MAP`: 방향점맵 리셋하기
-  - `blockMap/UNFOLD_BLOCK_MAP`: 블록맵에 블록리스트 그리기
+  - `blockMap/UNFOLD_BLOCK_MAP`: 블록맵에 블록(방향점)리스트 그리기
   - `indicatorList/RESET_INDICATOR_LIST`: 방향점리스트 리셋하기
+  - `blockMapHistory/NEXT_BLOCK_MAP_HISTORY`: 블록맵히스토리 저장하기
+  - ``: 게임 성공
+  - ``: 다음게임레벨 허용하기
+  - ``: 게임 실패
 - restartZhed (게임처음으로 되돌리기)
   - `indicatorMap/RESET_INDICATOR_MAP`: 방향점맵 리셋하기
   - `indicatorList/RESET_INDICATOR_LIST`: 방향점리스트 리셋하기

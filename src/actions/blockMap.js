@@ -1,5 +1,7 @@
 export const INITIALIZE_BLOCK_MAP = 'blockMap/INITIALIZE_BLOCK_MAP';
 export const UNFOLD_BLOCK_MAP = 'blockMap/UNFOLD_BLOCK_MAP';
+export const RESTART_BLOCK_MAP = 'blockMap/RESTART_BLOCK_MAP';
+export const UNDO_BLOCK_MAP = 'blockMap/UNDO_BLOCK_MAP';
 
 export function initializeBlockMap(map) {
   return {
@@ -11,6 +13,20 @@ export function initializeBlockMap(map) {
 function unfoldBlockMap(map) {
   return {
     type: UNFOLD_BLOCK_MAP,
+    map
+  };
+}
+
+function restartBlockMap(map) {
+  return {
+    type: RESTART_BLOCK_MAP,
+    map
+  };
+}
+
+function undoBlockMap(map) {
+  return {
+    type: UNDO_BLOCK_MAP,
     map
   };
 }

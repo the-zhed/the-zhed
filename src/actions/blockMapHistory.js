@@ -4,7 +4,6 @@ import {
   UNDO_BLOCK_MAP_HISTORY,
 } from '../contants/ActionTypes';
 
-
 function resetBlockMapHistory(map) {
   return {
     type: RESET_BLOCK_MAP_HISTORY,

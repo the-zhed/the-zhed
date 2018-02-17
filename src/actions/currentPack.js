@@ -1,8 +1,10 @@
-import { SELECT_CURRENT_PACK } from '../contants/ActionTypes';
+import {
+  SELECT_CURRENT_PACK,
+} from '../constants/ActionTypes'
 
 export function selectCurrentPack(pack) {
   return {
     type: SELECT_CURRENT_PACK,
     pack
-  };
+  }
 }

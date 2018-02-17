@@ -1,13 +1,13 @@
 import {
   INITIALIZE_PACK_LIST,
   ENABLED_LEVEL_PACK,
-} from '../contants/ActionTypes';
+} from '../constants/ActionTypes'
 
 function initializePackList(list) {
   return {
     type: INITIALIZE_PACK_LIST,
     list
-  };
+  }
 }
 
 function makePackList() {
@@ -17,31 +17,32 @@ function makePackList() {
       level: i.toString(),
       enabled: i === 1 ? true : false,
       package: parseInt((i / 20), 10) + 1,
-    };
+    }
   }
-  return result;
+  return result
 }
 
 function getLocalstorage() {
   const appName = 'ZhedApp';
-  let list = JSON.parse(window.localStorage.getItem(appName));
+  let pack = JSON.parse(window.localStorage.getItem(appName));
   if (!pack) {
-    list = makePackList();
+    pack = makePackList();
     window.localStorage.setItem(appName, JSON.stringify(pack));
   }
-  return list;
+  return pack
 }
 
 export function initailize() {
-  return (dispatch) => {
-    const list = getLocalstorage();
-    return dispatch(initializePackList(list))
-  }
+  // return (dispatch) => {
+    const list = getLocalstorage()
+    // dispatch(initializePackList(list))
+    return initializePackList(list)
+  // }
 }
 
 export function enabledLevelPack(level) {
   return {
     type: ENABLED_LEVEL_PACK,
     level
-  };
+  }
 }

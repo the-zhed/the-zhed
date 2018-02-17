@@ -1,30 +1,46 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Jumbotron from './pack/Jumbotron'
 import PackList from './pack/PackList'
+import {
+  initialize,
+  select
+} from '../actions/packActions'
 
 class Pack extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(initialize())
+  }
+
   render() {
-    const { packZhed } = this.props
+    const { packList } = this.props
     return (
       <div>
         <Jumbotron />
         <PackList
-          packZhed={packZhed}
+          packList={packList}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const { packZhed } = state
+const mapStateToProps = ({ packList }) => {
   return {
-    packZhed,
+    packList,
   }
 }
 
-export default withRouter(connect(
-  mapStateToProps
-)(Pack))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    select: (pack) => {
+      dispatch(select(pack))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Pack)

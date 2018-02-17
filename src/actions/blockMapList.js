@@ -1,16 +1,16 @@
 import {
   REQUEST_BLOCK,
   RECEIVE_BLOCK,
-} from '../contants/ActionTypes';
+} from '../constants/ActionTypes';
 
-function reqeustBlock(level) {
+export function reqeustBlock(level) {
   return {
     type: REQUEST_BLOCK,
     level
   };
 }
 
-function receiveBlock(level, block) {
+export function receiveBlock(level, block) {
   return{
     type: RECEIVE_BLOCK,
     level,
@@ -18,11 +18,11 @@ function receiveBlock(level, block) {
   };
 }
 
-export function fetchBlock(level) {
-  return (dispatch) => {
-    dispatch(reqeustBlock(level));
-    return fetch('/data/test.json')
-      .then(response => response.json())
-      .then(block => dispatch(receiveBlock(level, block)));
-  };
-}
+// export function fetchBlock(level) {
+//   return (dispatch) => {
+//     dispatch(reqeustBlock(level));
+//     return fetch('/data/test.json')
+//       .then(response => response.json())
+//       .then(block => dispatch(receiveBlock(level, block)));
+//   };
+// }

@@ -4,22 +4,23 @@ import {
   COMPLETE_SELECT_ZHED_DOT,
   COMPLETE_RESTART_ZHED,
   COMPLETE_UNDO_ZHED,
-} from '../contants/ActionTypes';
+} from '../constants/ActionTypes'
 
 function zhedStatus(
-  state = '',
-  actoin
+  state = {},
+  action
 ) {
-  switch (actoin.tpye) {
+  switch (action.type) {
     case COMPLETE_INITIALIZE_ZHED:
+      return action.code
     case COMPLETE_SELECT_ZHED_BUTTON:
     case COMPLETE_SELECT_ZHED_DOT:
     case COMPLETE_RESTART_ZHED:
     case COMPLETE_UNDO_ZHED:
-      return action.status;
+      return state
     default:
-      return state;
+      return state
   }
 }
 
-export default zhedStatus;
+export default zhedStatus

@@ -14,10 +14,10 @@ Zhed Actions
     - ${level}.json 데이터를 서버에 요청하다.
   - `blockMapList/RECEIVE_BLOCK` : 게임레벨 받기
     - ${level}.json 데이터를 받아서 리스트에 등록한다. `{ [level]: [[]] }`
-  - `backgroundMap/INITIALIZE_BG_MAP` : 백그라운드컬러맵 초기화하기
-    - 게임 데이터를 참고해서 백그라운드맵 배열을 생성한다.
   - `blockMap/INITIALIZE_BLOCK_MAP`: 블록맵 초기화하기
     - 게임 데이터를 복사해서 블록맵 배열을 생성한다.
+  - `backgroundMap/INITIALIZE_BG_MAP` : 백그라운드컬러맵 초기화하기
+    - 게임 데이터를 참고해서 백그라운드맵 배열을 생성한다.
   - `indicatorMap/RESET_INDICATOR_MAP`: 방향점맵 리셋하기
     - 게임 데이터를 참고해서 방향점맵 배열을 생성한다.
   - `indicatorList/RESET_INDICATOR_LIST`: 방향점리스트 리셋하기
@@ -76,13 +76,19 @@ store
   currentLevel: '',
   blockMapList: {
     '1': [
-      [],[],[],[],[]
+      [],
+      [],
+      [],
     ],
     '2': [
-      [],[],[],[],[]
+      [],
+      [],
+      [],
     ],
     '3': [
-      [],[],[],[],[]
+      [],
+      [],
+      [],
     ],
   },
   zhedStatus: 'initializeZhed',
@@ -94,7 +100,7 @@ store
     [   4 ,    4 ,    4 ,    4 ,    3 ,    2 ,    1 ,    1 ],
     [   4 ,    3 ,    2 ,    4 ,    3 ,    4 ,    4 ,    2 ],
     [   3 ,    4 ,    4 ,    2 ,    2 ,    2 ,    2 ,    2 ],
-    [   3 ,    1 ,    1 ,    1 ,    3 ,    2 ,    4 ,    1 ]
+    [   3 ,    1 ,    1 ,    1 ,    3 ,    2 ,    4 ,    1 ],
   ],
   blockMap: [
     [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"],
@@ -104,7 +110,7 @@ store
     [  "0",   "2",   "0",   "0",   "0",   "0",   "0",   "0"],
     [  "0",   "0",   "1",   "0",   "2",   "0",   "0",   "0"],
     [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"],
-    [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"]
+    [  "0",   "0",   "0",   "0",   "0",   "0",   "0",   "0"],
   ],
   indicatorMap: [
     [false, false, false, false, false, false, false, false],
@@ -114,28 +120,28 @@ store
     [false, false, false, false,     1, false, false, false],
     [false,     2, false,     1,     0,     1,     2, false],
     [false, false, false, false,     1, false, false, false],
-    [false, false, false, false,     2, false, false, false]
+    [false, false, false, false,     2, false, false, false],
   ],
   indicatorList: {
     'up': [
-      { row: 5, col: 4 },
-      { row: 4, col: 4 },
-      { row: 3, col: 4 }
+      { row: 5, col: 4, index: 0 },
+      { row: 4, col: 4, index: 1 },
+      { row: 3, col: 4, index: 2 },
     ],
     'right': [
-      { row: 5, col: 4 },
-      { row: 5, col: 5 },
-      { row: 5, col: 6 }
+      { row: 5, col: 4, index: 0 },
+      { row: 5, col: 5, index: 1 },
+      { row: 5, col: 6, index: 2 },
     ],
     'down': [
-      { row: 5, col: 4 },
-      { row: 6, col: 4 },
-      { row: 7, col: 4 }
+      { row: 5, col: 4, index: 0 },
+      { row: 6, col: 4, index: 1 },
+      { row: 7, col: 4, index: 2 },
     ],
     'left': [
-      { row: 5, col: 4 },
-      { row: 5, col: 3 },
-      { row: 5, col: 1 }
+      { row: 5, col: 4, index: 0 },
+      { row: 5, col: 3, index: 1 },
+      { row: 5, col: 1, index: 2 },
     ],
   },
   blockMapHistory: [

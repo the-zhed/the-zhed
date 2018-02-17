@@ -3,7 +3,7 @@ import {
   UNFOLD_BLOCK_MAP,
   RESTART_BLOCK_MAP,
   UNDO_BLOCK_MAP,
-} from '../contants/ActionTypes';
+} from '../constants/ActionTypes';
 
 export function initializeBlockMap(map) {
   return {
@@ -26,11 +26,27 @@ function restartBlockMap(map) {
   };
 }
 
+export function restart() {
+  return (dispatch, getState) => {
+    const { currentLevel, blockMapList } = getState()
+    const map = copyDeepMap(blockMapList[currentLevel])
+    dispatch(restartBlockMap(map))
+  }
+}
+
 function undoBlockMap(map) {
   return {
     type: UNDO_BLOCK_MAP,
     map
   };
+}
+
+export function undo() {
+  return (dispatch, getState) => {
+    const { blockMapList } = getState()
+    const map = copyDeepMap(blockMapList[blockMapList.length - 1])
+    dispatch(undoBlockMap(map))
+  }
 }
 
 function copyDeepMap(arr) {

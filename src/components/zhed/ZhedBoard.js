@@ -1,24 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faRedo, faReply } from '@fortawesome/fontawesome-free-solid';
-import ZhedPanel from './ZhedPanel';
+import React from 'react'
+import PropTypes from 'prop-types'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faRedo, faReply } from '@fortawesome/fontawesome-free-solid'
+import ZhedPanel from './ZhedPanel'
 
-const ZhedBoard = ({ stageZhed, onSelectZhedButton, onSelectZhedDot, onRestartZhed, onUndoZhed }) => (
+const ZhedBoard = (
+  {
+    currentLevel,
+    blockMap,
+    backgroundMap,
+    indicatorMap,
+    onSelectZhedButton,
+    onSelectZhedDot,
+    onRestartZhed,
+    onUndoZhed,
+  }
+) => (
   <div className="card">
     <div className="card-header">
-      ZhedBoard: {stageZhed.level}
+      ZhedBoard: {currentLevel}
     </div>
     <div className="card-body">
-      {stageZhed.level ? (
-        <ZhedPanel
-          map={stageZhed.map}
-          onSelectZhedButton={({ rowIdx, colIdx }) => onSelectZhedButton({ rowIdx, colIdx })}
-          onSelectZhedDot={({ rowIdx, colIdx }) => onSelectZhedDot({ rowIdx, colIdx })}
-        />
-      ) : (
-        <p>loading...</p>
-      )}
+      <ZhedPanel
+        blockMap={blockMap}
+        backgroundMap={backgroundMap}
+        indicatorMap={indicatorMap}
+        onSelectZhedButton={onSelectZhedButton}
+        onSelectZhedDot={onSelectZhedDot}
+      />
     </div>
     <div className="card-footer text-muted">
       <button
@@ -40,11 +49,14 @@ const ZhedBoard = ({ stageZhed, onSelectZhedButton, onSelectZhedDot, onRestartZh
 )
 
 ZhedBoard.propTypes = {
-  stageZhed: PropTypes.object,
+  currentLevel: PropTypes.string,
+  blockMap: PropTypes.array,
+  backgroundMap: PropTypes.array,
+  indicatorMap: PropTypes.array,
   onSelectZhedButton: PropTypes.func,
   onSelectZhedDot: PropTypes.func,
   onRestartZhed: PropTypes.func,
   onUndoZhed: PropTypes.func,
-};
+}
 
-export default ZhedBoard;
+export default ZhedBoard

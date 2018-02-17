@@ -1,7 +1,7 @@
 import { 
   REQUEST_BLOCK,
-  RECEIVE_BLOCK
-} from '../actions/blockMapList';
+  RECEIVE_BLOCK,
+} from '../constants/ActionTypes'
 
 function blockMapList(
   state = {},
@@ -12,15 +12,15 @@ function blockMapList(
       return {
         ...state,
         [action.level]: []
-      };
+      }
     case RECEIVE_BLOCK:
       return {
         ...state,
         [action.level]: action.block
       }
     default:
-      return state;
+      return state
   }
 }
 
-export default blockMapList;
+export default blockMapList

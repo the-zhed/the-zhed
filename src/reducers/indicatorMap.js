@@ -1,7 +1,7 @@
 import {
   RESET_INDICATOR_MAP,
   UNFOLD_INDICATOR_MAP
-} from '../actions/indicatorMap';
+} from '../constants/ActionTypes'
 
 function indicatorMap(
   state = [],
@@ -9,12 +9,11 @@ function indicatorMap(
 ) {
   switch (action.type) {
     case RESET_INDICATOR_MAP:
-      return action.map;
     case UNFOLD_INDICATOR_MAP:
-      return action.map;
+      return action.map
     default:
-      return state;
+      return state
   }
 }
 
-export default indicatorMap;
+export default indicatorMap

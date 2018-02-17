@@ -1,18 +1,11 @@
 import {
   RESET_INDICATOR_MAP,
   UNFOLD_INDICATOR_MAP,
-} from '../contants/ActionTypes';
+} from '../constants/ActionTypes';
 
 function resetIndicatorMap(map) {
   return {
     type: RESET_INDICATOR_MAP,
-    map
-  };
-}
-
-function unfoldIndicatorMap(map) {
-  return {
-    type: UNFOLD_INDICATOR_MAP,
     map
   };
 }
@@ -30,14 +23,26 @@ export function reset() {
   }
 }
 
-function makeIndicatorMap(state, rowIdx, colIdx) {
-  const map = nullMap(getState().blockMap);
-  return map;
+function unfoldIndicatorMap(map) {
+  return {
+    type: UNFOLD_INDICATOR_MAP,
+    map
+  };
 }
 
-export function unfold(rowIdx, colIdx) {
+function makeIndicatorMap(list, map) {
+  for (let el in list) {
+    list[el].forEach(dot => {
+      map[dot.row][dot.col] = dot.index
+    })
+  }
+  return map
+}
+
+export function unfold() {
   return (dispatch, getState) => {
-    const map = makeIndicatorMap(getState().blockMap, rowIdx, colIdx);
+    const { indicatorList, indicatorMap } = getState()
+    const map = makeIndicatorMap(indicatorList, nullMap(indicatorMap))
     dispatch(unfoldIndicatorMap(map));
   }
 }

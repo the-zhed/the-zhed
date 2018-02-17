@@ -1,44 +1,61 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import ZhedBoard from './zhed/ZhedBoard'
 import {
-  fetchZhedIfNeeded,
+  initailizeZhed,
   selectZhedButton,
   selectZhedDot,
   restartZhed,
   undoZhed,
-} from '../actions'
-import ZhedBoard from './zhed/ZhedBoard'
+} from '../actions/zhedStatus'
+import {
+  COMPLETE_INITIALIZE_ZHED,
+} from '../constants/ActionTypes'
 
 class Zhed extends React.Component {
   componentDidMount() {
-    const { fetchZhed, match } = this.props
-    fetchZhed(match.params.level)
+    const { initailizeZhed } = this.props
+    const { level } = this.props.match.params
+    initailizeZhed(level)
   }
 
   render() {
-    const { stageZhed, selectZhedButton, selectZhedDot } = this.props
+    const { currentLevel, blockMap, backgroundMap, indicatorMap, zhedStatus } = this.props
+    const { selectZhedButton, selectZhedDot, restartZhed, undoZhed } = this.props
     return (
-      <ZhedBoard
-        stageZhed={stageZhed}
-        onSelectZhedButton={selectZhedButton}
-        onSelectZhedDot={selectZhedDot}
-      />
+      <div className="container">
+      { zhedStatus === COMPLETE_INITIALIZE_ZHED ? (
+        <ZhedBoard
+          currentLevel={currentLevel}
+          blockMap={blockMap}
+          backgroundMap={backgroundMap}
+          indicatorMap={indicatorMap}
+          onSelectZhedButton={selectZhedButton}
+          onSelectZhedDot={selectZhedDot}
+        />
+      ) : (
+        <h2>loading...</h2>
+      )}
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  const { stageZhed } = state
+  const { currentLevel, backgroundMap, blockMap, indicatorMap, zhedStatus } = state
   return {
-    stageZhed,
+    currentLevel,
+    blockMap,
+    backgroundMap,
+    indicatorMap,
+    zhedStatus,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchZhed: level => {
-      dispatch(fetchZhedIfNeeded(level))
+    initailizeZhed: (level) => {
+      dispatch(initailizeZhed(level))
     },
     selectZhedButton: ({ rowIdx, colIdx }) => {
       dispatch(selectZhedButton({ rowIdx, colIdx }))
@@ -55,9 +72,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Zhed)
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Zhed)

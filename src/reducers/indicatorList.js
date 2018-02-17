@@ -1,7 +1,7 @@
 import {
   RESET_INDICATOR_LIST,
-  STACK_INDICATOR_LIST
-} from '../actions/indicatorList';
+  STACK_INDICATOR_LIST,
+} from '../constants/ActionTypes'
 
 function indicatorList(
   state = {
@@ -14,12 +14,11 @@ function indicatorList(
 ) {
   switch (action.type) {
     case RESET_INDICATOR_LIST:
-      return action.list;
     case STACK_INDICATOR_LIST:
-      return action.list;
+      return action.list
     default:
-      return state;
+      return state
   }
 }
 
-export default indicatorList;
+export default indicatorList

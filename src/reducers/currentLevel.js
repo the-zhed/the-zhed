@@ -1,15 +1,17 @@
-import { SELECT_CURRENT_LEVEL } from '../actions/currentLevel';
+import {
+  SELECT_CURRENT_LEVEL,
+} from '../constants/ActionTypes'
 
 function currentLevel(
-  state = '',
+  state = '0',
   action
 ) {
   switch (action.type) {
     case SELECT_CURRENT_LEVEL:
-      return action.level;
+      return action.level
     default:
-      return state;
+      return state
   }
 }
 
-export default currentLevel;
+export default currentLevel

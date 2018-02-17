@@ -1,4 +1,6 @@
-import { INITIALIZE_BG_MAP } from '../actions/backgroundMap';
+import {
+  INITIALIZE_BG_MAP 
+} from '../constants/ActionTypes'
 
 function backgroundMap(
   state = [],
@@ -6,10 +8,10 @@ function backgroundMap(
 ) {
   switch (action.type) {
     case INITIALIZE_BG_MAP:
-      return action.map;
+      return action.map
     default:
-      return state;
+      return state
   }
 }
 
-export default backgroundMap;
+export default backgroundMap

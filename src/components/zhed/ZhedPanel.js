@@ -2,18 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ZhedTile from './ZhedTile';
 
-const ZhedPanel = ({ map, onSelectZhedButton, onSelectZhedDot }) => (
+const ZhedPanel = (
+  {
+    blockMap,
+    backgroundMap,
+    indicatorMap,
+    onSelectZhedButton,
+    onSelectZhedDot,
+  }
+) => (
   <div>
-    {map.zhedBlockMap.map((row, rowIdx) => (
+    {blockMap.map((row, rowIdx) => (
       <div className="d-flex justify-content-center" key={rowIdx}>
         {row.map((col, colIdx) => (
           <ZhedTile
             key={colIdx}
-            background={map.backgroundMap[rowIdx][colIdx]}
+            background={backgroundMap[rowIdx][colIdx]}
             zhedBlock={col}
-            indicator={map.indicatorMap[rowIdx][colIdx]}
-            onSelectZhedButton={() => onSelectZhedButton({ rowIdx, colIdx })}
-            onSelectZhedDot={() => onSelectZhedDot({ rowIdx, colIdx })}
+            indicator={indicatorMap[rowIdx][colIdx]}
+            rowIdx={rowIdx}
+            colIdx={colIdx}
+            onSelectZhedButton={onSelectZhedButton}
+            onSelectZhedDot={onSelectZhedDot}
           />
         ))}
       </div>
@@ -22,7 +32,9 @@ const ZhedPanel = ({ map, onSelectZhedButton, onSelectZhedDot }) => (
 )
 
 ZhedPanel.propTypes = {
-  map: PropTypes.object,
+  blockMap: PropTypes.array,
+  backgroundMap: PropTypes.array,
+  indicatorMap: PropTypes.array,
   onSelectZhedButton: PropTypes.func,
   onSelectZhedDot: PropTypes.func,
 };

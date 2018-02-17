@@ -2,8 +2,8 @@ import {
   INITIALIZE_BLOCK_MAP,
   UNFOLD_BLOCK_MAP,
   RESTART_BLOCK_MAP,
-  UNDO_BLOCK_MAP
-} from '../actions/blockMap';
+  UNDO_BLOCK_MAP,
+} from '../constants/ActionTypes'
 
 function blockMap(
   state = [],
@@ -14,10 +14,10 @@ function blockMap(
     case UNFOLD_BLOCK_MAP:
     case RESTART_BLOCK_MAP:
     case UNDO_BLOCK_MAP:
-      return action.map;
+      return action.map
     default:
-      return state;
+      return state
   }
 }
 
-export default blockMap;
+export default blockMap

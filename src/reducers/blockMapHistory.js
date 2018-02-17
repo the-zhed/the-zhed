@@ -1,8 +1,8 @@
 import {
   RESET_BLOCK_MAP_HISTORY,
   NEXT_BLOCK_MAP_HISTORY,
-  UNDO_BLOCK_MAP_HISTORY
-} from '../actions';
+  UNDO_BLOCK_MAP_HISTORY,
+} from '../constants/ActionTypes'
 
 function blockMapHistory(
   state = [],
@@ -10,17 +10,19 @@ function blockMapHistory(
 ) {
   switch (action.type) {
     case RESET_BLOCK_MAP_HISTORY:
-      return [];
+      return []
     case NEXT_BLOCK_MAP_HISTORY:
       return [
         ...state,
         action.map
-      ];
+      ]
     case UNDO_BLOCK_MAP_HISTORY:
       return [
         ...state.splice(0, state.length)
-      ];
+      ]
     default:
-      break;
+      return state
   }
 }
+
+export default blockMapHistory

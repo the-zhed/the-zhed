@@ -1,7 +1,7 @@
 import {
   INITIALIZE_PACK_LIST,
-  ENABLED_LEVEL_PACK
-} from '../actions/packList';
+  ENABLED_LEVEL_PACK,
+} from '../constants/ActionTypes'
 
 function packList(
   state = {},
@@ -9,7 +9,7 @@ function packList(
 ) {
   switch (action.type) {
     case INITIALIZE_PACK_LIST:
-      return action.list;
+      return action.list
     case ENABLED_LEVEL_PACK:
       return {
         ...state,
@@ -19,8 +19,8 @@ function packList(
         }
       }
     default:
-      return state;
+      return state
   }
 }
 
-export default packList;
+export default packList

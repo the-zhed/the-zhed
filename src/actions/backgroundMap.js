@@ -1,4 +1,4 @@
-import { INITIALIZE_BG_MAP } from '../contants/ActionTypes';
+import { INITIALIZE_BG_MAP } from '../constants/ActionTypes';
 
 function initializeBackgroundMap(map) {
   return {
@@ -10,7 +10,7 @@ function initializeBackgroundMap(map) {
 function randomMap(arr) {
   return arr.map(row => {
     return row.map(col => Math.floor(Math.random() * (4)) + 1);
-  });
+  })
 }
 
 export function initailize() {

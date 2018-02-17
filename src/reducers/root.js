@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import currentPack from './currentPack';
 import packList from './packList';
+import zhedStatus from './zhedStatus';
 import currentLevel from './currentLevel';
 import blockMapList from './blockMapList';
-import zhedStatus from './zhedStatus';
 import backgroundMap from './backgroundMap';
 import blockMap from './blockMap';
 import indicatorMap from './indicatorMap';
@@ -13,9 +13,9 @@ import blockMapHistory from './blockMapHistory';
 const root = combineReducers({
   currentPack,
   packList,
+  zhedStatus,
   currentLevel,
   blockMapList,
-  zhedStatus,
   backgroundMap,
   blockMap,
   indicatorMap,

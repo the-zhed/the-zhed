@@ -33,11 +33,13 @@ function getLocalstorage() {
 }
 
 export function initailize() {
-  // return (dispatch) => {
-    const list = getLocalstorage()
-    // dispatch(initializePackList(list))
-    return initializePackList(list)
-  // }
+  return (dispatch, getState) => {
+    let { packList } = getState()
+    if (Object.keys(packList).length === 0) {
+      packList = getLocalstorage()
+    }
+    dispatch(initializePackList(packList))
+  }
 }
 
 export function enabledLevelPack(level) {

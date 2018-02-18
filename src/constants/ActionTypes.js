@@ -1,9 +1,9 @@
 // zhedStatus
-export const COMPLETE_INITIALIZE_ZHED    = 'zhedStatus/COMPLETE_INITIALIZE_ZHED';
-export const COMPLETE_SELECT_ZHED_BUTTON = 'zhedStatus/COMPLETE_SELECT_ZHED_BUTTON';
-export const COMPLETE_SELECT_ZHED_DOT    = 'zhedStatus/COMPLETE_SELECT_ZHED_DOT';
-export const COMPLETE_RESTART_ZHED       = 'zhedStatus/COMPLETE_RESTART_ZHED';
-export const COMPLETE_UNDO_ZHED          = 'zhedStatus/COMPLETE_UNDO_ZHED';
+export const COMPLETE_INITIALIZE_ZHED    = 'zhed/COMPLETE_INITIALIZE_ZHED';
+export const COMPLETE_SELECT_ZHED_BUTTON = 'zhed/COMPLETE_SELECT_ZHED_BUTTON';
+export const COMPLETE_SELECT_ZHED_DOT    = 'zhed/COMPLETE_SELECT_ZHED_DOT';
+export const COMPLETE_RESTART_ZHED       = 'zhed/COMPLETE_RESTART_ZHED';
+export const COMPLETE_UNDO_ZHED          = 'zhed/COMPLETE_UNDO_ZHED';
 // currentPack
 export const SELECT_CURRENT_PACK     = 'currentPack/SELECT_CURRENT_PACK';
 // packList

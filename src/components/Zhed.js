@@ -7,7 +7,7 @@ import {
   selectZhedDot,
   restartZhed,
   undoZhed,
-} from '../actions/zhedStatus'
+} from '../actions/zhed'
 import {
   COMPLETE_INITIALIZE_ZHED,
 } from '../constants/ActionTypes'
@@ -20,11 +20,11 @@ class Zhed extends React.Component {
   }
 
   render() {
-    const { currentLevel, blockMap, backgroundMap, indicatorMap, zhedStatus } = this.props
+    const { currentLevel, blockMap, backgroundMap, indicatorMap, zhed } = this.props
     const { selectZhedButton, selectZhedDot, restartZhed, undoZhed } = this.props
     return (
       <div className="container">
-      { zhedStatus === COMPLETE_INITIALIZE_ZHED ? (
+      { zhed === COMPLETE_INITIALIZE_ZHED ? (
         <ZhedBoard
           currentLevel={currentLevel}
           blockMap={blockMap}
@@ -42,13 +42,13 @@ class Zhed extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { currentLevel, backgroundMap, blockMap, indicatorMap, zhedStatus } = state
+  const { currentLevel, backgroundMap, blockMap, indicatorMap, zhed } = state
   return {
     currentLevel,
     blockMap,
     backgroundMap,
     indicatorMap,
-    zhedStatus,
+    zhed,
   }
 }
 

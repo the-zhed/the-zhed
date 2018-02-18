@@ -1,12 +1,14 @@
 # Zhed
 
-Pack Actions
-- `packList/INITIALIZE_PACK_LIST` : 게임팩리스트 초기화하기
-  - localstorage 에서 데이터 추출하거나 새로운 객체 생성한다.
-- `currentPack/SELECT_CURRENT_PACK` : 게임팩 선택하기
-  - 게임 묶음팩 선택하기, 게임 레벨 리스트 표시한다.
+PackActions
+- initializePack
+  - `packList/INITIALIZE_PACK_LIST` : 게임팩리스트 초기화하기
+    - localstorage 에서 데이터 추출하거나 새로운 객체 생성한다.
+- selectPack
+  - `currentPack/SELECT_CURRENT_PACK` : 게임팩 선택하기
+    - 게임 묶음팩 선택하기, 게임 레벨 리스트 표시한다.
 
-Zhed Actions
+ZhedActions
 - initializeZhed (게임초기화하기)
   - `currentLevel/SELECT_CURRENT_LEVEL` : 게임레밸 선택하기
     - /zhed/:level url에서 level 값을 획득한다.

@@ -52,7 +52,7 @@ export function selectZhedButton({ rowIdx, colIdx }) {
     setTimeout(() => {
       dispatch(IndicatorMapAction.unfold())
       dispatch(completeSelectZhedButton())
-    }, 150)
+    }, 50)
   }
 }
 

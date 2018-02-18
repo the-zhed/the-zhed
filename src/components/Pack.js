@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 import Jumbotron from './pack/Jumbotron'
 import PackList from './pack/PackList'
 import {
-  initialize,
-  select
-} from '../actions/packActions'
+  initializePack,
+  selectPack,
+} from '../actions/pack'
 
 class Pack extends React.Component {
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(initialize())
+    const { initialize } = this.props
+    initialize()
   }
 
   render() {
@@ -34,8 +34,11 @@ const mapStateToProps = ({ packList }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    initialize: () => {
+      dispatch(initializePack())
+    },
     select: (pack) => {
-      dispatch(select(pack))
+      dispatch(selectPack(pack))
     }
   }
 }

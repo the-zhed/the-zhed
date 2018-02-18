@@ -19,12 +19,12 @@
   opacity: .0;
 }
 
-.dot-1 { animation-delay: .1s; }
-.dot-2 { animation-delay: .2s; }
-.dot-3 { animation-delay: .3s; }
-.dot-4 { animation-delay: .4s; }
-.dot-5 { animation-delay: .5s; }
-.dot-6 { animation-delay: .6s; }
-.dot-7 { animation-delay: .7s; }
-.dot-8 { animation-delay: .8s; }
-.dot-9 { animation-delay: .9s; }
+.dot-1 { animation-delay: .05s; }
+.dot-2 { animation-delay: .1s; }
+.dot-3 { animation-delay: .15s; }
+.dot-4 { animation-delay: .2s; }
+.dot-5 { animation-delay: .25s; }
+.dot-6 { animation-delay: .3s; }
+.dot-7 { animation-delay: .35s; }
+.dot-8 { animation-delay: .4s; }
+.dot-9 { animation-delay: .45s; }

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import currentPack from './currentPack';
 import packList from './packList';
-import zhedStatus from './zhedStatus';
+import zhed from './zhed';
 import currentLevel from './currentLevel';
 import blockMapList from './blockMapList';
 import backgroundMap from './backgroundMap';
@@ -13,7 +13,7 @@ import blockMapHistory from './blockMapHistory';
 const root = combineReducers({
   currentPack,
   packList,
-  zhedStatus,
+  zhed,
   currentLevel,
   blockMapList,
   backgroundMap,

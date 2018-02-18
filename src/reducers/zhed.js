@@ -6,7 +6,7 @@ import {
   COMPLETE_UNDO_ZHED,
 } from '../constants/ActionTypes'
 
-function zhedStatus(
+function zhed(
   state = {},
   action
 ) {
@@ -23,4 +23,4 @@ function zhedStatus(
   }
 }
 
-export default zhedStatus
+export default zhed

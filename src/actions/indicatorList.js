@@ -24,12 +24,14 @@ function stackIndicatorList(list) {
 
 function makeIndicatorList(map, list, { rowIdx, colIdx }) {
   const indicatorList = { up: [], right: [], down: [], left: [] }
-  const blockNumber = parseInt(map[rowIdx][colIdx], 10)
-
-  if (blockNumber === 0) {
+  
+  if (list['up'][0] &&
+      list['up'][0].row === rowIdx &&
+      list['up'][0].col === colIdx) {
     return indicatorList
   }
-
+  
+  const blockNumber = parseInt(map[rowIdx][colIdx], 10)
   const directionList = [
     { x:  0 , y: -1, n: blockNumber, d: 'up'    },
     { x:  1 , y:  0, n: blockNumber, d: 'right' },
@@ -66,7 +68,6 @@ function makeIndicatorList(map, list, { rowIdx, colIdx }) {
   })
   // newIndicatorMap[rowIdx][colIdx] = 0
   return indicatorList
-
 }
 
 export function stack({ rowIdx, colIdx }) {

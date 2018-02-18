@@ -17,7 +17,6 @@ import ZhedAPI from '../api'
 function completeInitializeZhed() {
   return {
     type: COMPLETE_INITIALIZE_ZHED,
-    code: COMPLETE_INITIALIZE_ZHED,
   }
 }
 
@@ -41,7 +40,6 @@ export function initailizeZhed(level) {
 function completeSelectZhedButton() {
   return {
     type: COMPLETE_SELECT_ZHED_BUTTON,
-    code: COMPLETE_SELECT_ZHED_BUTTON,
   }
 }
 
@@ -59,7 +57,6 @@ export function selectZhedButton({ rowIdx, colIdx }) {
 function completeSelectZhedDot() {
  return {
    type: COMPLETE_SELECT_ZHED_DOT,
-   code: COMPLETE_SELECT_ZHED_DOT,
  }
 }
 
@@ -76,12 +73,15 @@ export function selectZhedDot({ rowIdx, colIdx }) {
 function completeRestartZhed() {
   return {
     type: COMPLETE_RESTART_ZHED,
-    code: COMPLETE_RESTART_ZHED,
   }
 }
 
 export function restartZhed() {
   return (dispatch, getState) => {
+    dispatch(IndicatorMapAction.reset())
+    dispatch(IndicatorListAction.resetIndicatorList())
+    dispatch(BlockMapAction.restart())
+    dispatch(BlockMapHistoryAction.resetBlockMapHistory())
     dispatch(completeRestartZhed())
   }
 }
@@ -89,7 +89,6 @@ export function restartZhed() {
 function completeUndoZhed() {
   return {
     type: COMPLETE_UNDO_ZHED,
-    code: COMPLETE_UNDO_ZHED,
   }
 }
 

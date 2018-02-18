@@ -24,7 +24,7 @@ class Zhed extends React.Component {
     const { selectZhedButton, selectZhedDot, restartZhed, undoZhed } = this.props
     return (
       <div className="container">
-      { zhed === COMPLETE_INITIALIZE_ZHED ? (
+      { zhed ? (
         <ZhedBoard
           currentLevel={currentLevel}
           blockMap={blockMap}

@@ -13,6 +13,7 @@ import * as IndicatorMapAction from './indicatorMap'
 import * as IndicatorListAction from './indicatorList'
 import * as BlockMapHistoryAction from './blockMapHistory'
 import ZhedAPI from '../api'
+import blockMapHistory from '../reducers/blockMapHistory';
 
 function completeInitializeZhed() {
   return {
@@ -94,6 +95,10 @@ function completeUndoZhed() {
 
 export function undoZhed() {
   return (dispatch, getState) => {
+    dispatch(IndicatorMapAction.reset())
+    dispatch(IndicatorListAction.resetIndicatorList())
+    dispatch(BlockMapAction.undo())
+    dispatch(BlockMapHistoryAction.undoBlockMapHistory())
     dispatch(completeUndoZhed())
   }
 }

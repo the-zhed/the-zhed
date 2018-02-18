@@ -61,7 +61,7 @@ ZhedActions
     - 기존 방향점맵을 초기화한다.
   - `indicatorList/RESET_INDICATOR_LIST`: 방향점리스트 리셋하기
     - 방향점리스트를 지운다.
-  - `blockMap/UNDO_BLOCK_MAP`: 블록맵에 블록리스트 그리기
+  - `blockMap/UNDO_BLOCK_MAP`: 블록맵에 블록 그리기
     - 블록히스토리의 마지막 맵을 블록맵에 그린다.
   - `blockMapHistory/UNDO_BLOCK_MAP_HISTORY`: 블록맵히스토리 되돌리기
     - 블록히스토리의 마지막 맵을 삭제한다.

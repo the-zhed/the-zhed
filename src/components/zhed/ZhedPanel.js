@@ -7,8 +7,8 @@ const ZhedPanel = (
     blockMap,
     backgroundMap,
     indicatorMap,
-    onSelectZhedButton,
-    onSelectZhedDot,
+    selectZhedButton,
+    selectZhedDot,
   }
 ) => (
   <div>
@@ -22,8 +22,8 @@ const ZhedPanel = (
             indicator={indicatorMap[rowIdx][colIdx]}
             rowIdx={rowIdx}
             colIdx={colIdx}
-            onSelectZhedButton={onSelectZhedButton}
-            onSelectZhedDot={onSelectZhedDot}
+            selectZhedButton={selectZhedButton}
+            selectZhedDot={selectZhedDot}
           />
         ))}
       </div>
@@ -35,8 +35,8 @@ ZhedPanel.propTypes = {
   blockMap: PropTypes.array,
   backgroundMap: PropTypes.array,
   indicatorMap: PropTypes.array,
-  onSelectZhedButton: PropTypes.func,
-  onSelectZhedDot: PropTypes.func,
+  selectZhedButton: PropTypes.func,
+  selectZhedDot: PropTypes.func,
 };
 
 export default ZhedPanel;

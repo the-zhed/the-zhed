@@ -12,17 +12,17 @@ const ZhedTile = (
     indicator,
     rowIdx,
     colIdx,
-    onSelectZhedButton,
-    onSelectZhedDot,
+    selectZhedButton,
+    selectZhedDot,
   }
 ) => (
   <div className={classnames('Zhed-tile', 'text-center', 'p-1', `gray-${background}00`)}>
     {zhedBlock !== '0'
-      ? <ZhedButton block={zhedBlock} onClick={() => onSelectZhedButton({ rowIdx, colIdx })} />
+      ? <ZhedButton block={zhedBlock} onClick={() => selectZhedButton({ rowIdx, colIdx })} />
       : null
     }
     {indicator
-      ? <ZhedDot indicator={indicator} onClick={() => onSelectZhedDot({ rowIdx, colIdx })} />
+      ? <ZhedDot indicator={indicator} onClick={() => selectZhedDot({ rowIdx, colIdx })} />
       : null
     }
   </div>
@@ -37,8 +37,8 @@ ZhedTile.propTypes = {
   ]),
   rowIdx: PropTypes.number,
   colIdx: PropTypes.number,
-  onSelectZhedButton: PropTypes.func,
-  onSelectZhedDot: PropTypes.func,
+  selectZhedButton: PropTypes.func,
+  selectZhedDot: PropTypes.func,
 };
 
 export default ZhedTile;

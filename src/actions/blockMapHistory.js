@@ -10,12 +10,6 @@ export function resetBlockMapHistory() {
   };
 }
 
-// function reset() {
-//   return (dispatch, getState) => {
-//     getState().blockMap
-//   }
-// }
-
 function nextBlockMapHistory(map) {
   return {
     type: NEXT_BLOCK_MAP_HISTORY,
@@ -31,7 +25,8 @@ function copyDeepMap(arr) {
 
 export function next() {
   return (dispatch, getState) => {
-    const map = copyDeepMap(getState.blockMap)
+    const { blockMap } = getState()
+    const map = copyDeepMap(blockMap)
     dispatch(nextBlockMapHistory(map))
   }
 }

@@ -10,10 +10,10 @@ const ZhedBoard = (
     blockMap,
     backgroundMap,
     indicatorMap,
-    onSelectZhedButton,
-    onSelectZhedDot,
-    onRestartZhed,
-    onUndoZhed,
+    selectZhedButton,
+    selectZhedDot,
+    restartZhed,
+    undoZhed,
   }
 ) => (
   <div className="card">
@@ -25,21 +25,21 @@ const ZhedBoard = (
         blockMap={blockMap}
         backgroundMap={backgroundMap}
         indicatorMap={indicatorMap}
-        onSelectZhedButton={onSelectZhedButton}
-        onSelectZhedDot={onSelectZhedDot}
+        selectZhedButton={selectZhedButton}
+        selectZhedDot={selectZhedDot}
       />
     </div>
     <div className="card-footer text-muted">
       <button
         className="btn btn-outline-dark"
-        onClick={() => onRestartZhed()}
+        onClick={() => restartZhed()}
       >
         <FontAwesomeIcon icon={faRedo} />
         <p className="mb-0">RESTART</p>
       </button>
       <button
         className="btn btn-outline-dark"
-        onClick={() => onUndoZhed()}
+        onClick={() => undoZhed()}
       >
         <FontAwesomeIcon icon={faReply} />
         <p className="mb-0">UNDO</p>
@@ -53,10 +53,10 @@ ZhedBoard.propTypes = {
   blockMap: PropTypes.array,
   backgroundMap: PropTypes.array,
   indicatorMap: PropTypes.array,
-  onSelectZhedButton: PropTypes.func,
-  onSelectZhedDot: PropTypes.func,
-  onRestartZhed: PropTypes.func,
-  onUndoZhed: PropTypes.func,
+  selectZhedButton: PropTypes.func,
+  selectZhedDot: PropTypes.func,
+  restartZhed: PropTypes.func,
+  undoZhed: PropTypes.func,
 }
 
 export default ZhedBoard

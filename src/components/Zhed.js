@@ -30,8 +30,10 @@ class Zhed extends React.Component {
           blockMap={blockMap}
           backgroundMap={backgroundMap}
           indicatorMap={indicatorMap}
-          onSelectZhedButton={selectZhedButton}
-          onSelectZhedDot={selectZhedDot}
+          selectZhedButton={selectZhedButton}
+          selectZhedDot={selectZhedDot}
+          restartZhed={restartZhed}
+          undoZhed={undoZhed}
         />
       ) : (
         <h2>loading...</h2>

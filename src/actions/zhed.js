@@ -65,6 +65,10 @@ function completeSelectZhedDot() {
 
 export function selectZhedDot({ rowIdx, colIdx }) {
   return (dispatch, getState) => {
+    dispatch(IndicatorMapAction.reset())
+    dispatch(BlockMapHistoryAction.next())
+    dispatch(BlockMapAction.unfold({ rowIdx, colIdx }))
+    dispatch(IndicatorListAction.resetIndicatorList())
     dispatch(completeSelectZhedDot())
   }
 }

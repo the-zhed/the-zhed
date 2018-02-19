@@ -54,7 +54,7 @@ function makeIndicatorList(map, list, { rowIdx, colIdx }) {
         && col < map[0].length
       ) {
         const zhedBlock = map[row][col]
-        if (zhedBlock === '0') {
+        if (zhedBlock === '0' || zhedBlock === 'Z') {
           index += 1
           // newIndicatorMap[row][col] = index
           indicatorList[direction.d].push({ row, col, index })

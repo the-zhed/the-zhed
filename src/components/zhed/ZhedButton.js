@@ -9,6 +9,8 @@ const ZhedButton = ({ block, onClick }) => {
       return <button className="btn btn-dark btn-block h-100" disabled>Z</button>;
     case 'B':
       return <button className="btn btn-dark btn-block h-100" disabled>B</button>;
+    case 'T':
+      return <button className="btn btn-dark btn-block h-100">T</button>;
     case '0':
       return null;
     case '1':

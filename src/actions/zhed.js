@@ -98,7 +98,7 @@ export function undoZhed() {
     dispatch(IndicatorMapAction.reset())
     dispatch(IndicatorListAction.resetIndicatorList())
     dispatch(BlockMapAction.undo())
-    dispatch(BlockMapHistoryAction.undoBlockMapHistory())
+    dispatch(BlockMapHistoryAction.undo())
     dispatch(completeUndoZhed())
   }
 }

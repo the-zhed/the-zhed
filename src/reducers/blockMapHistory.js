@@ -18,7 +18,7 @@ function blockMapHistory(
       ]
     case UNDO_BLOCK_MAP_HISTORY:
       return [
-        ...state.splice(0, state.length)
+        ...state.splice(0, state.length - 1)
       ]
     default:
       return state

@@ -31,8 +31,17 @@ export function next() {
   }
 }
 
-export function undoBlockMapHistory(map) {
+function undoBlockMapHistory() {
   return {
     type: UNDO_BLOCK_MAP_HISTORY,
+  }
+}
+
+export function undo() {
+  return (dispatch, getState) => {
+    const { blockMapHistory } = getState()
+    if (blockMapHistory.length > 0) {
+      dispatch(undoBlockMapHistory())
+    }
   }
 }

@@ -44,8 +44,10 @@ function undoBlockMap(map) {
 export function undo() {
   return (dispatch, getState) => {
     const { blockMapHistory } = getState()
-    const map = copyDeepMap(blockMapHistory[blockMapHistory.length - 1])
-    dispatch(undoBlockMap(map))
+    if (blockMapHistory.length > 0) {
+      const map = copyDeepMap(blockMapHistory[blockMapHistory.length - 1])
+      dispatch(undoBlockMap(map))
+    }
   }
 }
 

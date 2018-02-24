@@ -1,6 +1,6 @@
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import ZhedButton from './ZhedButton';
 import ZhedDot from './ZhedDot';
 import './ZhedTile.css';

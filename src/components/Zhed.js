@@ -1,6 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ZhedBoard from './zhed/ZhedBoard'
+// import ZhedBoard from './zhed/ZhedBoard'
+import BackgroundMap from './zhed/BackgroundMap'
+import BlockMap from './zhed/BlockMap'
+import IndicatorMap from './zhed/IndicatorMap'
 import {
   initailizeZhed,
   selectZhedButton,
@@ -24,20 +27,27 @@ class Zhed extends React.Component {
     const { selectZhedButton, selectZhedDot, restartZhed, undoZhed } = this.props
     return (
       <div className="container">
-      { zhed ? (
-        <ZhedBoard
-          currentLevel={currentLevel}
-          blockMap={blockMap}
-          backgroundMap={backgroundMap}
-          indicatorMap={indicatorMap}
-          selectZhedButton={selectZhedButton}
-          selectZhedDot={selectZhedDot}
-          restartZhed={restartZhed}
-          undoZhed={undoZhed}
-        />
-      ) : (
-        <h2>loading...</h2>
-      )}
+        {zhed ? (
+          <div className="position-relative">
+            <div className="position-absolute">
+              <BackgroundMap backgrounds={backgroundMap} />
+            </div>
+            <div className="position-absolute">
+              <IndicatorMap
+                indicators={indicatorMap}
+                selectDot={selectZhedDot}
+              />
+            </div>
+            <div className="position-absolute">
+              <BlockMap
+                blocks={blockMap}
+                selectButton={selectZhedButton}
+              />
+            </div>
+          </div>
+        ) : (
+          <h2>loading...</h2>
+        )}
       </div>
     )
   }

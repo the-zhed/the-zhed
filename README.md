@@ -17,11 +17,11 @@ ZhedActions
   - `blockMapList/RECEIVE_BLOCK` : 게임레벨 받기
     - ${level}.json 데이터를 받아서 리스트에 등록한다. `{ [level]: [[]] }`
   - `blockMap/INITIALIZE_BLOCK_MAP`: 블록맵 초기화하기
-    - 게임 데이터를 복사해서 블록맵 배열을 생성한다.
+    - 게임레벨 데이터를 복사해서 블록맵 배열을 생성한다.
   - `backgroundMap/INITIALIZE_BG_MAP` : 백그라운드컬러맵 초기화하기
-    - 게임 데이터를 참고해서 백그라운드맵 배열을 생성한다.
+    - 게임레벨 데이터를 참고해서 백그라운드맵 배열을 생성한다.
   - `indicatorMap/RESET_INDICATOR_MAP`: 방향점맵 리셋하기
-    - 게임 데이터를 참고해서 방향점맵 배열을 생성한다.
+    - 게임레벨 데이터를 참고해서 방향점맵 배열을 생성한다.
   - `indicatorList/RESET_INDICATOR_LIST`: 방향점리스트 리셋하기
     - 빈 방향점리스트를 생성한다.
   - `blockMapHistory/RESET_BLOCK_MAP_HISTORY`: 블록맵히스토리 리셋하기
@@ -43,10 +43,10 @@ ZhedActions
   - `indicatorList/RESET_INDICATOR_LIST`: 방향점리스트 리셋하기
     - 방향점리스트를 지운다.
   - ``: 게임 성공실패 체크
-    - ``: 게임 성공
-    - ``: 다음게임레벨 허용하기
-    - ``: 게임 실패
-    - ``: 게임리스타트
+- `LEVEL_COMPLETE`: 게임 성공
+  - `packList/NEXT_LEVEL_UNLOCK`: 다음게임레벨 허용하기
+- `LEVEL_FAILURE`: 게임 실패
+  - `LEVEL_RESTART`: 게임리스타트
 - restartZhed (게임처음으로 되돌리기)
   - `indicatorMap/RESET_INDICATOR_MAP`: 방향점맵 리셋하기
     - 기존 방향점맵을 초기화한다.

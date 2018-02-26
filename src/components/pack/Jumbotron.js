@@ -21,7 +21,7 @@ class Jumbotron extends React.Component {
     return (
       <div className="jumbotron jumbotron-fluid pb-0">
         <div className="container">
-          <h1 className="display-4">Hello, world!</h1>
+          <h1 className="display-4">LEVEL Board!</h1>
           <p className="lead">Select Pack</p>
           <hr className="my-4" />
             <ul className="nav nav-tabs px-a">

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import _ from 'underscore'
 import Jumbotron from './pack/Jumbotron'
 import PackList from './pack/PackList'
 import {
@@ -8,42 +9,40 @@ import {
 } from '../actions/pack'
 
 class Pack extends React.Component {
+  constructor(props) {
+    super(props)
+    this.selectPack = this.selectPack.bind(this)
+  }
+
   componentDidMount() {
-    const { initialize } = this.props
-    initialize()
+    const { dispatch } = this.props
+    dispatch(initializePack())
+  }
+
+  selectPack(pack) {
+    const { dispatch } = this.props
+    dispatch(selectPack(pack))
   }
 
   render() {
-    const { packList } = this.props
+    const { currentPack, list } = this.props
     return (
       <div>
-        <Jumbotron />
+        <Jumbotron
+          currentPack={currentPack}
+          selectPack={this.selectPack}
+        />
         <PackList
-          packList={packList}
+          packList={list}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ packList }) => {
-  return {
-    packList,
-  }
-}
+const mapStateToProps = ({ currentPack, packList }) => ({
+  currentPack,
+  list: _.filter(packList, (el) => ( el.package === currentPack ))
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    initialize: () => {
-      dispatch(initializePack())
-    },
-    select: (pack) => {
-      dispatch(selectPack(pack))
-    }
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Pack)
+export default connect(mapStateToProps)(Pack)

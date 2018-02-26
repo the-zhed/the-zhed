@@ -3,7 +3,7 @@ import {
 } from '../constants/ActionTypes'
 
 function currentPack(
-  state = '0',
+  state = 1,
   action
 ) {
   switch (action.type) {

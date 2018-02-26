@@ -12,10 +12,10 @@ function initializePackList(list) {
 
 function makePackList() {
   const result = {};
-  for (let i = 1; i <= 100; i++) {
-    result[i] = {
-      level: i.toString(),
-      enabled: i === 1 ? true : false,
+  for (let i = 0; i < 100; i++) {
+    result[i + 1] = {
+      level: (i + 1).toString(),
+      enabled: i === 0 ? true : false,
       package: parseInt((i / 20), 10) + 1,
     }
   }

@@ -9,9 +9,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Pack from './components/Pack';
 import Zhed from './components/Zhed';
-import store from './store';
 
-const App = () => (
+const App = ({ store }) => (
   <Provider store={store}>
     <Router>
       <div>

@@ -11,34 +11,25 @@ function initializePackList(list) {
 }
 
 function makePackList() {
-  const result = {};
+  const result = []
   for (let i = 0; i < 100; i++) {
-    result[i + 1] = {
+    result.push({
       level: (i + 1).toString(),
       enabled: i === 0 ? true : false,
-      package: parseInt((i / 20), 10) + 1,
-    }
+      pack: parseInt((i / 20), 10) + 1,
+    })
   }
   return result
-}
-
-function getLocalstorage() {
-  const appName = 'ZhedApp';
-  let pack = JSON.parse(window.localStorage.getItem(appName));
-  if (!pack) {
-    pack = makePackList();
-    window.localStorage.setItem(appName, JSON.stringify(pack));
-  }
-  return pack
 }
 
 export function initailize() {
   return (dispatch, getState) => {
     let { packList } = getState()
     if (Object.keys(packList).length === 0) {
-      packList = getLocalstorage()
+      packList = makePackList()
+      dispatch(initializePackList(packList))
     }
-    dispatch(initializePackList(packList))
+    return false;
   }
 }
 

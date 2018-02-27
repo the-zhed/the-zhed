@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 const PackList = ({ packList }) => (
   <div className="container">
     <div className="row">
-      {Object.keys(packList).map((key) => (
-        <div className="col-3" key={packList[key].level}>
-          {packList[key].enabled ? (
-            <Link to={`/zhed/${packList[key].level}`} className="btn btn-dark btn-block mb-3">
-              {packList[key].level}
+      {packList.map((el) => (
+        <div className="col-3" key={el.level}>
+          {el.enabled ? (
+            <Link to={`/zhed/${el.level}`} className="btn btn-dark btn-block mb-3">
+              {el.level}
             </Link>
           ) : (
             <button className="btn btn-dark btn-block mb-3" disabled>
-              {packList[key].level}
+              {el.level}
             </button>
           )}
         </div>

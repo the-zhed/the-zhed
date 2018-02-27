@@ -70,11 +70,11 @@ store
 ```javascript
 {
   currentPack: 1,
-  packList: {
-    '1': { level: 1, enabled: true,  pack: 1 },
-    '2': { level: 2, enabled: false, pack: 1 },
-    '3': { level: 3, enabled: false, pack: 1 },
-  },
+  packList: [
+    { level: "1", enabled: true,  pack: 1 },
+    { level: "2", enabled: false, pack: 1 },
+    { level: "3", enabled: false, pack: 1 },
+  ],
   currentLevel: '',
   blockMapList: {
     '1': [

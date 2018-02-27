@@ -42,7 +42,7 @@ class Pack extends React.Component {
 
 const mapStateToProps = ({ currentPack, packList }) => ({
   currentPack,
-  list: _.filter(packList, (el) => ( el.package === currentPack ))
+  list: _.filter(packList, (el) => ( el.pack === currentPack ))
 })
 
 export default connect(mapStateToProps)(Pack)

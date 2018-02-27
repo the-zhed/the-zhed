@@ -3,11 +3,9 @@ import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProductio
 import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
 import root from '../reducers/root';
+import { loadState, saveState } from '../util/localStorage';
 
-const persistedState = {
-
-};
-
+const persistedState = loadState();
 const store = createStore(
   root,
   persistedState,
@@ -18,5 +16,9 @@ const store = createStore(
     )
   )
 );
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 export default store;

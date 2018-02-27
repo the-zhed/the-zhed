@@ -1,15 +1,22 @@
 import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import thunkMiddleware from 'redux-thunk';
+import logger from 'redux-logger';
 import root from '../reducers/root';
+
+const persistedState = {
+
+};
 
 const store = createStore(
   root,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(
-    thunkMiddleware,
-    logger,
-  ),
+  persistedState,
+  composeWithDevTools(
+    applyMiddleware(
+      thunkMiddleware,
+      logger,
+    )
+  )
 );
 
 export default store;

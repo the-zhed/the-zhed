@@ -25,3 +25,7 @@ function packList(
 }
 
 export default packList
+
+export const getLevelsPackList = (state, filter) => {
+  return state.filter(el => el.pack === filter)
+}

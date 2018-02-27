@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import _ from 'underscore'
 import Jumbotron from './pack/Jumbotron'
 import PackList from './pack/PackList'
+import { getLevelsPackList } from '../reducers/root'
 import {
   initializePack,
   selectPack,
@@ -38,9 +38,9 @@ class Pack extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentPack, packList }) => ({
-  currentPack,
-  list: _.filter(packList, (el) => ( el.pack === currentPack ))
+const mapStateToProps = (state) => ({
+  currentPack: state.currentPack,
+  list: getLevelsPackList(state, state.currentPack)
 })
 
 export default connect(

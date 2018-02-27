@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import currentPack from './currentPack';
-import packList from './packList';
+import packList, * as fromPackList from './packList';
 import zhed from './zhed';
 import currentLevel from './currentLevel';
 import blockMapList from './blockMapList';
@@ -24,3 +24,6 @@ const root = combineReducers({
 });
 
 export default root;
+
+export const getLevelsPackList = (state, filter) =>
+  fromPackList.getLevelsPackList(state.packList, filter)

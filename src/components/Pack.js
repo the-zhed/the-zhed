@@ -15,13 +15,11 @@ class Pack extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(initializePack())
+    this.props.initializePack()
   }
 
   selectPack(pack) {
-    const { dispatch } = this.props
-    dispatch(selectPack(pack))
+    this.props.selectPack(pack)
   }
 
   render() {
@@ -45,4 +43,10 @@ const mapStateToProps = ({ currentPack, packList }) => ({
   list: _.filter(packList, (el) => ( el.pack === currentPack ))
 })
 
-export default connect(mapStateToProps)(Pack)
+export default connect(
+  mapStateToProps,
+  {
+    initializePack: initializePack,
+    selectPack: selectPack,
+  }
+)(Pack)

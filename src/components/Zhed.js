@@ -64,27 +64,33 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    initailizeZhed: (level) => {
-      dispatch(initailizeZhed(level))
-    },
-    selectZhedButton: ({ rowIdx, colIdx }) => {
-      dispatch(selectZhedButton({ rowIdx, colIdx }))
-    },
-    selectZhedDot: ({ rowIdx, colIdx }) => {
-      dispatch(selectZhedDot({ rowIdx, colIdx }))
-    },
-    restartZhed: () => {
-      dispatch(restartZhed())
-    },
-    undoZhed: () => {
-      dispatch(undoZhed())
-    },
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     initailizeZhed: (level) => {
+//       dispatch(initailizeZhed(level))
+//     },
+//     selectZhedButton: ({ rowIdx, colIdx }) => {
+//       dispatch(selectZhedButton({ rowIdx, colIdx }))
+//     },
+//     selectZhedDot: ({ rowIdx, colIdx }) => {
+//       dispatch(selectZhedDot({ rowIdx, colIdx }))
+//     },
+//     restartZhed: () => {
+//       dispatch(restartZhed())
+//     },
+//     undoZhed: () => {
+//       dispatch(undoZhed())
+//     },
+//   }
+// }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  {
+    initailizeZhed: initailizeZhed,
+    selectZhedButton: selectZhedButton,
+    selectZhedDot: selectZhedDot,
+    restartZhed: restartZhed,
+    undoZhed: undoZhed,
+  }
 )(Zhed)

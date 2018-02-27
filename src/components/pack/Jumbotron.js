@@ -27,7 +27,7 @@ class Jumbotron extends React.Component {
             <ul className="nav nav-tabs px-a">
             {this.state.packList.map((el, idx) => (
               <li className="nav-item" key={idx}>
-                <a href="#"
+                <a href=""
                   className={classnames('nav-link', { 'active': el === currentPack })}
                   data-pack={el}
                   onClick={this.handleClick}

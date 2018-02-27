@@ -28,14 +28,6 @@ const ZhedTile = (
     ) : null
     ))
     }
-    {/* {zhedBlock !== '0'
-      ? <ZhedButton block={zhedBlock} onClick={() => selectZhedButton({ rowIdx, colIdx })} />
-      : null
-    }
-    {indicator
-      ? <ZhedDot indicator={indicator} onClick={() => selectZhedDot({ rowIdx, colIdx })} />
-      : null
-    } */}
   </div>
 )
 

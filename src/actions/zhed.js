@@ -13,7 +13,6 @@ import * as IndicatorMapAction from './indicatorMap'
 import * as IndicatorListAction from './indicatorList'
 import * as BlockMapHistoryAction from './blockMapHistory'
 import ZhedAPI from '../api'
-import blockMapHistory from '../reducers/blockMapHistory';
 
 function completeInitializeZhed() {
   return {

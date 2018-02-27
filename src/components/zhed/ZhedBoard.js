@@ -1,62 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faRedo, faReply } from '@fortawesome/fontawesome-free-solid'
-import ZhedPanel from './ZhedPanel'
+import ZhedTile from './ZhedTile'
 
-const ZhedBoard = (
-  {
-    currentLevel,
-    blockMap,
-    backgroundMap,
-    indicatorMap,
-    selectZhedButton,
-    selectZhedDot,
-    restartZhed,
-    undoZhed,
-  }
-) => (
-  <div className="card">
-    <div className="card-header">
-      ZhedBoard: {currentLevel}
-    </div>
-    <div className="card-body">
-      <ZhedPanel
-        blockMap={blockMap}
-        backgroundMap={backgroundMap}
-        indicatorMap={indicatorMap}
-        selectZhedButton={selectZhedButton}
-        selectZhedDot={selectZhedDot}
-      />
-    </div>
-    <div className="card-footer text-muted">
-      <button
-        className="btn btn-outline-dark"
-        onClick={() => restartZhed()}
-      >
-        <FontAwesomeIcon icon={faRedo} />
-        <p className="mb-0">RESTART</p>
-      </button>
-      <button
-        className="btn btn-outline-dark"
-        onClick={() => undoZhed()}
-      >
-        <FontAwesomeIcon icon={faReply} />
-        <p className="mb-0">UNDO</p>
-      </button>
-    </div>
+const ZhedBoard = ({
+  blockMap,
+  backgroundMap,
+  indicatorMap,
+  selectZhedButton,
+  selectZhedDot,
+}) => (
+  <div>
+    {blockMap.map((row, rowIdx) => (
+      <div className="d-flex justify-content-center" key={rowIdx}>
+        {row.map((col, colIdx) => (
+          <ZhedTile
+            key={colIdx}
+            background={backgroundMap[rowIdx][colIdx]}
+            zhedBlock={col}
+            indicator={indicatorMap[rowIdx][colIdx]}
+            rowIdx={rowIdx}
+            colIdx={colIdx}
+            selectZhedButton={selectZhedButton}
+            selectZhedDot={selectZhedDot}
+          />
+        ))}
+      </div>
+    ))}
   </div>
 )
 
 ZhedBoard.propTypes = {
-  currentLevel: PropTypes.string,
   blockMap: PropTypes.array,
   backgroundMap: PropTypes.array,
   indicatorMap: PropTypes.array,
   selectZhedButton: PropTypes.func,
   selectZhedDot: PropTypes.func,
-  restartZhed: PropTypes.func,
-  undoZhed: PropTypes.func,
 }
 
 export default ZhedBoard

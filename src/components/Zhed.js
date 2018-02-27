@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import ZhedBoard from './zhed/ZhedBoard'
-import BackgroundMap from './zhed/BackgroundMap'
-import BlockMap from './zhed/BlockMap'
-import IndicatorMap from './zhed/IndicatorMap'
+import ZhedBoard from './zhed/ZhedBoard'
+import ControlPanel from './zhed/ControlPanel'
 import {
   initailizeZhed,
   selectZhedButton,
@@ -11,9 +9,6 @@ import {
   restartZhed,
   undoZhed,
 } from '../actions/zhed'
-import {
-  COMPLETE_INITIALIZE_ZHED,
-} from '../constants/ActionTypes'
 
 class Zhed extends React.Component {
   componentDidMount() {
@@ -25,29 +20,29 @@ class Zhed extends React.Component {
   render() {
     const { currentLevel, blockMap, backgroundMap, indicatorMap, zhed } = this.props
     const { selectZhedButton, selectZhedDot, restartZhed, undoZhed } = this.props
+    if (!zhed) {
+      return <h2>loading...</h2>;
+    }
     return (
       <div className="container">
-        {zhed ? (
-          <div className="position-relative">
-            <div className="position-absolute">
-              <BackgroundMap backgrounds={backgroundMap} />
-            </div>
-            <div className="position-absolute">
-              <IndicatorMap
-                indicators={indicatorMap}
-                selectDot={selectZhedDot}
-              />
-            </div>
-            <div className="position-absolute">
-              <BlockMap
-                blocks={blockMap}
-                selectButton={selectZhedButton}
-              />
-            </div>
-          </div>
-        ) : (
-          <h2>loading...</h2>
-        )}
+        <div>
+          <h2>{currentLevel}</h2>
+        </div>
+        <div>
+          <ZhedBoard
+            blockMap={blockMap}
+            backgroundMap={backgroundMap}
+            indicatorMap={indicatorMap}
+            selectZhedButton={selectZhedButton}
+            selectZhedDot={selectZhedDot}
+          />
+        </div>
+        <div className="text-center">
+          <ControlPanel
+            restartZhed={restartZhed}
+            undoZhed={undoZhed}
+          />
+        </div>
       </div>
     )
   }
@@ -63,26 +58,6 @@ const mapStateToProps = (state) => {
     zhed,
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     initailizeZhed: (level) => {
-//       dispatch(initailizeZhed(level))
-//     },
-//     selectZhedButton: ({ rowIdx, colIdx }) => {
-//       dispatch(selectZhedButton({ rowIdx, colIdx }))
-//     },
-//     selectZhedDot: ({ rowIdx, colIdx }) => {
-//       dispatch(selectZhedDot({ rowIdx, colIdx }))
-//     },
-//     restartZhed: () => {
-//       dispatch(restartZhed())
-//     },
-//     undoZhed: () => {
-//       dispatch(undoZhed())
-//     },
-//   }
-// }
 
 export default connect(
   mapStateToProps,

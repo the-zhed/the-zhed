@@ -4,20 +4,21 @@ import {
 } from '../constants/ActionTypes'
 
 function packList(
-  state = {},
+  state = [],
   action
 ) {
   switch (action.type) {
     case INITIALIZE_PACK_LIST:
       return action.list
     case ENABLED_LEVEL_PACK:
-      return {
-        ...state,
-        [action.level]: {
+      return [
+        ...state.slice(0, action.level),
+        {
           ...state[action.level],
           enabled: true
-        }
-      }
+        },
+        ...state.slice(action.level + 1)
+      ]
     default:
       return state
   }

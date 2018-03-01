@@ -33,16 +33,16 @@ function makeIndicatorList(map, list, { rowIdx, colIdx }) {
   
   const blockNumber = parseInt(map[rowIdx][colIdx], 10)
   const directionList = [
-    { x:  0 , y: -1, n: blockNumber, d: 'up'    },
-    { x:  1 , y:  0, n: blockNumber, d: 'right' },
-    { x:  0 , y:  1, n: blockNumber, d: 'down'  },
-    { x: -1 , y:  0, n: blockNumber, d: 'left'  },
+    { x:  0 , y: -1, n: blockNumber, d: 'up',    dec: '9650' },
+    { x:  1 , y:  0, n: blockNumber, d: 'right', dec: '9654' },
+    { x:  0 , y:  1, n: blockNumber, d: 'down',  dec: '9660' },
+    { x: -1 , y:  0, n: blockNumber, d: 'left',  dec: '9664' },
   ]
   directionList.forEach((direction) => {
     let index = 0
     let row = rowIdx
     let col = colIdx
-    indicatorList[direction.d].push({ row, col, index })
+    indicatorList[direction.d].push({ row, col, index, dec: direction.dec })
 
     while (index < direction.n) {
       row += direction.y

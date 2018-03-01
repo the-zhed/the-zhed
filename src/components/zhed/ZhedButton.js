@@ -23,7 +23,7 @@ const ZhedButton = ({ block, onClick }) => {
       return (
         <button
           className="btn btn-warning btn-zhed btn-block h-100"
-          onClick={onClick}
+          onClick={() => onClick()}
         >
           {block}
         </button>

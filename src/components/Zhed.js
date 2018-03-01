@@ -12,9 +12,18 @@ import {
 
 class Zhed extends React.Component {
   componentDidMount() {
-    const { initailizeZhed } = this.props
-    const { level } = this.props.match.params
-    initailizeZhed(level)
+    this.loadData()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.level !== this.props.match.params.level) {
+      this.loadData()
+    }
+  }
+
+  loadData() {
+    const { initailizeZhed, match } = this.props
+    initailizeZhed(match.params.level)
   }
 
   render() {

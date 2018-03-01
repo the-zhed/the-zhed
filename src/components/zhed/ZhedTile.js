@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import ZhedButton from './ZhedButton';
-import ZhedDot from './ZhedDot';
-import './ZhedTile.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
+import ZhedButton from './ZhedButton'
+import ZhedDot from './ZhedDot'
+import './ZhedTile.css'
 
 const ZhedTile = (
   {

@@ -2,3 +2,59 @@
   height: 4rem;
   width: 4rem;
 }
+
+.co-gray-100 {
+  background-color: #f0f3f5;
+}
+.co-gray-200 {
+  background-color: #c2cfd6;
+}
+.co-gray-300 {
+  background-color: #a4b7c1;
+}
+.co-gray-400 {
+  background-color: #869fac;
+}
+.co-gray-500 {
+  background-color: #678898;
+}
+.co-gray-600 {
+  background-color: #536c79;
+}
+.co-gray-700 {
+  background-color: #3e515b;
+}
+.co-gray-800 {
+  background-color: #29363d;
+}
+.co-gray-900 {
+  background-color: #151b1e;
+}
+
+.gray-100 {
+  background-color: #f8f9fa;
+}
+.gray-200 {
+  background-color: #e9ecef;
+}
+.gray-300 {
+  background-color: #dee2e6;
+}
+.gray-400 {
+  background-color: #ced4da;
+}
+.gray-500 {
+  background-color: #adb5bd;
+}
+.gray-600 {
+  background-color: #6c757d;
+}
+.gray-700 {
+  background-color: #495057;
+}
+.gray-800 {
+  background-color: #343a40;
+}
+.gray-900 {
+  background-color: #212529;
+}

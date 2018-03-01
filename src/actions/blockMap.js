@@ -64,7 +64,7 @@ function makeBlockMap(blockMap, indicatorList, rowIdx, colIdx) {
       block.row === rowIdx && block.col === colIdx)
     if (sameBlcok) {
       indicatorList[direction].forEach((block) => {
-        map[block.row][block.col] = 'B'
+        map[block.row][block.col] = map[block.row][block.col] === 'Z' ? 'S' : 'B'
       })
     }
   }

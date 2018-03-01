@@ -1,25 +1,28 @@
 import {
   RESET_INDICATOR_MAP,
   UNFOLD_INDICATOR_MAP,
-} from '../constants/ActionTypes';
+} from '../constants/ActionTypes'
 
 function resetIndicatorMap(map) {
   return {
     type: RESET_INDICATOR_MAP,
     map
-  };
+  }
 }
 
 function nullMap(arr) {
+  // const rowsArray = Array(arr.length).fill();
+  // return rowsArray.map(() => Array(arr[0].length).fill(false))
+
   return arr.map(row => {
-    return row.map(col => false);
-  });
+    return row.map(col => false)
+  })
 }
 
 export function reset() {
   return (dispatch, getState) => {
-    const map = nullMap(getState().blockMap);
-    dispatch(resetIndicatorMap(map));
+    const map = nullMap(getState().blockMap)
+    dispatch(resetIndicatorMap(map))
   }
 }
 
@@ -27,7 +30,7 @@ function unfoldIndicatorMap(map) {
   return {
     type: UNFOLD_INDICATOR_MAP,
     map
-  };
+  }
 }
 
 function makeIndicatorMap(list, map) {
@@ -43,6 +46,6 @@ export function unfold() {
   return (dispatch, getState) => {
     const { indicatorList, indicatorMap } = getState()
     const map = makeIndicatorMap(indicatorList, nullMap(indicatorMap))
-    dispatch(unfoldIndicatorMap(map));
+    dispatch(unfoldIndicatorMap(map))
   }
 }

@@ -2,8 +2,6 @@
 export const COMPLETE_INITIALIZE_ZHED    = 'zhed/COMPLETE_INITIALIZE_ZHED';
 export const COMPLETE_SELECT_ZHED_BUTTON = 'zhed/COMPLETE_SELECT_ZHED_BUTTON';
 export const COMPLETE_SELECT_ZHED_DOT    = 'zhed/COMPLETE_SELECT_ZHED_DOT';
-export const COMPLETE_SUCCESS_ZHED       = 'zhed/COMPLETE_SUCCESS_ZHED';
-export const COMPLETE_FAILURE_ZHED       = 'zhed/COMPLETE_FAILURE_ZHED';
 export const COMPLETE_RESTART_ZHED       = 'zhed/COMPLETE_RESTART_ZHED';
 export const COMPLETE_UNDO_ZHED          = 'zhed/COMPLETE_UNDO_ZHED';
 // currentPack
@@ -21,6 +19,8 @@ export const INITIALIZE_BG_MAP       = 'backgroundMap/INITIALIZE_BG_MAP';
 // blockMap
 export const INITIALIZE_BLOCK_MAP    = 'blockMap/INITIALIZE_BLOCK_MAP';
 export const UNFOLD_BLOCK_MAP        = 'blockMap/UNFOLD_BLOCK_MAP';
+export const SUCCESS_BLOCK_MAP       = 'blockMap/SUCCESS_BLOCK_MAP';
+export const FAILURE_BLOCK_MAP       = 'blockMap/FAILURE_BLOCK_MAP';
 export const RESTART_BLOCK_MAP       = 'blockMap/RESTART_BLOCK_MAP';
 export const UNDO_BLOCK_MAP          = 'blockMap/UNDO_BLOCK_MAP';
 // indicatorMap

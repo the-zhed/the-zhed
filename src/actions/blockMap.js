@@ -1,9 +1,12 @@
 import {
   INITIALIZE_BLOCK_MAP,
   UNFOLD_BLOCK_MAP,
+  SUCCESS_BLOCK_MAP,
+  FAILURE_BLOCK_MAP,
   RESTART_BLOCK_MAP,
   UNDO_BLOCK_MAP,
 } from '../constants/ActionTypes'
+import * as PackListActions from './packList'
 
 export function initializeBlockMap(map) {
   return {
@@ -76,5 +79,39 @@ export function unfold({ rowIdx, colIdx }) {
     const { blockMap, indicatorList } = getState()
     const map = makeBlockMap(blockMap, indicatorList, rowIdx, colIdx)
     dispatch(unfoldBlockMap(map))
+  }
+}
+
+
+function fetchSuccess() {
+  return {
+    type: SUCCESS_BLOCK_MAP
+  }
+}
+
+function fetchFailure() {
+  return {
+    type: FAILURE_BLOCK_MAP
+  }
+}
+
+function isSuccess(map) {
+  return map.some((row) => row.includes('S'))
+}
+
+function isFinish(map) {
+  return map.every(row => row.every(col => !(col >= '1' && col <= '9')))
+}
+
+export function checkSuccess() {
+  return (dispatch, getState) => {
+    const { blockMap, currentLevel } = getState()
+    if (isSuccess(blockMap)) {
+      dispatch(fetchSuccess())
+      dispatch(PackListActions.enabledLevelPack(parseInt(currentLevel, 10)))
+    } else if (isFinish(blockMap)){
+      dispatch(fetchFailure())
+    }
+    return;
   }
 }

@@ -2,8 +2,6 @@ import {
   COMPLETE_INITIALIZE_ZHED,
   COMPLETE_SELECT_ZHED_BUTTON,
   COMPLETE_SELECT_ZHED_DOT,
-  COMPLETE_SUCCESS_ZHED,
-  COMPLETE_FAILURE_ZHED,
   COMPLETE_RESTART_ZHED,
   COMPLETE_UNDO_ZHED,
 } from '../constants/ActionTypes'
@@ -56,38 +54,6 @@ export function selectZhedButton({ rowIdx, colIdx }) {
   }
 }
 
-function fetchSuccess() {
-  return {
-    type: COMPLETE_SUCCESS_ZHED
-  }
-}
-
-function fetchFailure() {
-  return {
-    type: COMPLETE_FAILURE_ZHED
-  }
-}
-
-function isSuccess(map) {
-  return map.some((row) => row.includes('S'))
-}
-
-function isFinish(map) {
-  return map.every(row => row.every(col => !(col >= '1' && col <= '9')))
-}
-
-export function checkSuccess() {
-  return (dispatch, getState) => {
-    const { blockMap } = getState()
-    if (isSuccess(blockMap)) {
-      dispatch(fetchSuccess())
-    } else if (isFinish(blockMap)){
-      dispatch(fetchFailure())
-    }
-    return;
-  }
-}
-
 function completeSelectZhedDot() {
  return {
    type: COMPLETE_SELECT_ZHED_DOT,
@@ -101,7 +67,7 @@ export function selectZhedDot({ rowIdx, colIdx }) {
     dispatch(BlockMapAction.unfold({ rowIdx, colIdx }))
     dispatch(IndicatorListAction.resetIndicatorList())
     dispatch(completeSelectZhedDot())
-    dispatch(checkSuccess())
+    dispatch(BlockMapAction.checkSuccess())
 
   }
 }

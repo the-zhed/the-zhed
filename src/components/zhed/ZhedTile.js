@@ -18,7 +18,7 @@ const ZhedTile = (
 ) => (
   <div className={classnames('Zhed-tile', 'text-center', 'p-1', `gray-${background}00`)}>
     {zhedBlock !== '0' && indicator ? (
-      <ZhedButton block='T' onClick={() => selectZhedButton({ rowIdx, colIdx })} />
+      <ZhedButton block='T' onClick={() => selectZhedDot({ rowIdx, colIdx })} />
     ) : (
       zhedBlock !== '0' ? (
       <ZhedButton block={zhedBlock} onClick={() => selectZhedButton({ rowIdx, colIdx })} />
